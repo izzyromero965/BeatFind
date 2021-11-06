@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+}
+
+.signup-container {
+  display: flex;
+  height: 43rem;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  background-image: url(https://www.adobe.com/content/dam/cc/us/en/creativecloud/photography/discover/concert-photography/thumbnail.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.signup-form {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: white;
+  border-radius: 15px;
+  width: 20rem;
+}
+
+.signup-form > h2 {
+  font-weight: 100;
+  margin: 0px;
+  justify-self: center;
+  align-self: center;
+  color: black;
+}
+
+#signupBtn {
+  margin: 0.3rem;
+  margin-bottom: 1rem;
+  display: flex;
+  color: #fff;
+  background-color: #009dff;
+  border-color: transparent;
+  padding: 1px 6px;
+  border-radius: 4px;
+  height: 2rem;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.signup-input {
+  height: 1.5rem;
+  width: 100%;
+  font-size: 15px;
+  border-color: rgba(0, 0, 0, 0.4);
+  padding: 7px;
+  border-radius: 5px;
+  border-width: 0.5px;
+}
