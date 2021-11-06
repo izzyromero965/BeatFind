@@ -1,13 +1,15 @@
 .navbar {
+  position: absolute;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   height: 40px;
+  background: none;
+  width: 100vw;
 }
 
-li {
-  text-decoration: none;
-}
 a {
   text-decoration: none;
+  color: white;
+  padding: 1em;
 }

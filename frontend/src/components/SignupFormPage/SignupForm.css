@@ -4,10 +4,9 @@ body {
 
 .signup-container {
   display: flex;
-  height: 44rem;
+  height: 100%;
   align-items: center;
   justify-content: center;
-  align-items: center;
   background-image: url(https://www.adobe.com/content/dam/cc/us/en/creativecloud/photography/discover/concert-photography/thumbnail.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
