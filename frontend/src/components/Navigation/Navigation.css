@@ -1,0 +1,13 @@
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 40px;
+}
+
+li {
+  text-decoration: none;
+}
+a {
+  text-decoration: none;
+}

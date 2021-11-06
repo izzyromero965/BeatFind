@@ -15,20 +15,24 @@ const Navigation = ({ isLoaded }) => {
     sessionLinks = (
       <>
         <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
+        <NavLink to="/signup" className="nav-link">
+          Sign Up
+        </NavLink>
       </>
     );
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">
-          Home
-        </NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    <nav className="navbar">
+      <ul>
+        <li>
+          <NavLink className="nav-link" exact to="/">
+            Home
+          </NavLink>
+          {isLoaded && sessionLinks}
+        </li>
+      </ul>
+    </nav>
   );
 };
 
