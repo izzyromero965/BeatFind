@@ -1,7 +1,13 @@
 import React from "react";
 import "./SplashPage.css";
+import { useHistory } from "react-router-dom";
 
 const SplashPage = () => {
+  const routeChange = () => {
+    let path = "/signup";
+    history.push(path);
+  };
+  const history = useHistory();
   return (
     <div className="splash-container">
       <div className="description-container">
@@ -11,7 +17,9 @@ const SplashPage = () => {
             Join the BeatFind community, home to tens of billions of photos of
             your favorite moments.
           </p>
-          <button className="description-signupBtn">Start for free</button>
+          <button onClick={routeChange} className="description-signupBtn">
+            Start for free
+          </button>
         </div>
       </div>
     </div>
