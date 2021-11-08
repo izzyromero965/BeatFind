@@ -40,4 +40,11 @@ router.post(
   })
 );
 
+//Home Page:
+
+router.get("/:id(\\d+)/homepage", requireAuth, async (req, res, next) => {
+  const { userId } = req.session.auth;
+  console.log("helloooooo from homepage!", userId);
+});
+
 module.exports = router;
