@@ -1,10 +1,11 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
-import { restoreCSRF } from "./csrf";
 import sessionReducer from "./session";
+import imageReducer from "./actions";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
+  imageState: imageReducer,
 });
 
 let enhancer;
