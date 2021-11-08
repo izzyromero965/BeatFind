@@ -1,0 +1,21 @@
+.loginBtn {
+  width: 5rem;
+  height: 2rem;
+  border-radius: 5px;
+  border: none;
+}
+
+.loginModal {
+  display: flex;
+  padding: 2rem;
+  flex-direction: column;
+  height: 13rem;
+  width: 15rem;
+  border: none;
+}
+
+.loginModalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
