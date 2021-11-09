@@ -9,7 +9,6 @@ import UserHomePage from "./components/UserHomePage/UserHomePage";
 
 function App() {
   const sessionUser = useSelector((state) => state.session.user);
-  console.log(sessionUser);
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
@@ -26,9 +25,11 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path={`/${sessionUser.id}/homepage`}>
-            <UserHomePage />
-          </Route>
+          {sessionUser && (
+            <Route path={`/${sessionUser.id}/homepage`}>
+              <UserHomePage />
+            </Route>
+          )}
         </Switch>
       )}
     </>
