@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const asyncHandler = require("express-async-handler");
+const { db } = require("../../config");
 
 const { Image } = require("../../db/models");
 
@@ -24,6 +25,36 @@ router.get(
     });
     console.log(images);
     res.json(images);
+  })
+);
+
+router.delete(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const image = await Image.findByPK(id);
+    await image.destroy();
+    res.send("Image deleted successfully!");
+  })
+);
+
+router.put(
+  "/:id",
+  asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
+    const { albumId, content } = req.body;
+    const image = await Image.findByPK(id);
+    const err = new Error("Image not found!");
+    if (image) {
+      await image.update({
+        albumId,
+        content,
+      });
+
+      res.json({ image });
+    } else {
+      next(err);
+    }
   })
 );
 
