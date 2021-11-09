@@ -11,12 +11,12 @@ const UploadImage = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const [imageUrl, setImageUrl] = useState("");
   const [content, setContent] = useState("");
-  const [albumId, setAlbumId] = useState(1);
+  const [albumId, setAlbumId] = useState();
 
   const reset = () => {
     setImageUrl("");
     setContent("");
-    setAlbumId(69);
+    setAlbumId();
   };
 
   const handleSubmit = async (e) => {
