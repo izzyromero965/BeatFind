@@ -10,7 +10,6 @@ export const addImages = (newImage) => ({
   type: ADD_IMAGES,
   newImage,
 });
-
 export const getImages = () => async (dispatch) => {
   const res = await csrfFetch("/api/images");
   console.log(res);

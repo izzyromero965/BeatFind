@@ -19,7 +19,13 @@ const UserHomePage = () => {
     <div className="homepage-container">
       <div className="images">
         {images.map((image) => {
-          return <img src={image.imageUrl} className="homepageImg"></img>;
+          return (
+            <img
+              src={image.imageUrl}
+              className="homepageImg"
+              key={image.id}
+            ></img>
+          );
         })}
       </div>
     </div>

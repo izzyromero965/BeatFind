@@ -1,7 +1,10 @@
 .images {
   display: flex;
+  height: 100%;
+  gap: 1rem;
+  justify-content: center;
 }
 
 .homepageImg {
-  height: 20rem;
+  height: 15rem;
 }
