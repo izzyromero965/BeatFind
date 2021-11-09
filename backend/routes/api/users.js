@@ -47,4 +47,32 @@ router.get("/:id(\\d+)/homepage", requireAuth, async (req, res, next) => {
   console.log("helloooooo from homepage!", userId);
 });
 
+router.get(
+  "/:id/albums",
+  asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const albums = await Album.findAll({
+      where: {
+        userId: id,
+      },
+    });
+    console.log(albums);
+    res.json(albums);
+  })
+);
+
+router.get(
+  "/:id/images",
+  asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const images = await Image.findAll({
+      where: {
+        userId: id,
+      },
+    });
+    console.log(images);
+    res.json(images);
+  })
+);
+
 module.exports = router;

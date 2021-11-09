@@ -13,20 +13,6 @@ router.get(
   })
 );
 
-router.get(
-  "/:id",
-  asyncHandler(async (req, res) => {
-    const { id } = req.params;
-    const images = await Image.findAll({
-      where: {
-        userId: id,
-      },
-    });
-    console.log(images);
-    res.json(images);
-  })
-);
-
 router.delete(
   "/:id",
   asyncHandler(async (req, res) => {

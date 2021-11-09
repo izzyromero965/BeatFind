@@ -13,19 +13,6 @@ router.get(
   })
 );
 
-router.get(
-  "/:id",
-  asyncHandler(async (req, res) => {
-    const { id } = req.params;
-    const albums = await Album.findAll({
-      where: {
-        userId: id,
-      },
-    });
-    console.log(albums);
-    res.json(albums);
-  })
-);
 
 router.delete(
   "/:id",
