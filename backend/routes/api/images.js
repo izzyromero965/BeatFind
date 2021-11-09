@@ -27,6 +27,36 @@ router.get(
   })
 );
 
+router.delete(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const image = await Image.findByPK(id);
+    await image.destroy();
+    res.send("Image deleted successfully!");
+  })
+);
+
+router.put(
+  "/:id",
+  asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
+    const { albumId, content } = req.body;
+    const image = await Image.findByPK(id);
+    const err = new Error("Image not found!");
+    if (image) {
+      await image.update({
+        albumId,
+        content,
+      });
+
+      res.json({ image });
+    } else {
+      next(err);
+    }
+  })
+);
+
 router.post(
   "/",
   asyncHandler(async (req, res, next) => {

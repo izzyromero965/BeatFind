@@ -3,14 +3,25 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LoginFormModal from "../LoginFormModal/index";
 import ProfileButton from "./ProfileButton";
+import { useDispatch } from "react-redux";
+import * as sessionActions from "../../store/session";
 import "./Navigation.css";
 
 const Navigation = ({ isLoaded }) => {
+  const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-
+  const logout = (e) => {
+    e.preventDefault();
+    dispatch(sessionActions.logoutUser());
+  };
   let sessionLinks;
   if (sessionUser) {
-    sessionLinks = <ProfileButton user={sessionUser} />;
+    sessionLinks = (
+      <>
+        <NavLink to={`${sessionUser.id}/upload`}>Upload</NavLink>
+        <button onClick={logout}>Log Out</button>
+      </>
+    );
   } else {
     sessionLinks = (
       <>

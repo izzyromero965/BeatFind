@@ -11,7 +11,7 @@ const LoginFormPage = () => {
   const [password, setPassword] = useState("");
   const [validationErrors, setValidationErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to={`${sessionUser.id}/homepage`} />;
 
   const handleSubmit = (e) => {
     e.preventDefault();

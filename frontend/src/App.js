@@ -6,10 +6,10 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import UserHomePage from "./components/UserHomePage/UserHomePage";
+import UploadImage from "./components/UploadImage/UploadImage.js";
 
 function App() {
   const sessionUser = useSelector((state) => state.session.user);
-  console.log(sessionUser);
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
@@ -26,9 +26,16 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path={`/${sessionUser.id}/homepage`}>
-            <UserHomePage />
-          </Route>
+          {sessionUser && (
+            <Switch>
+              <Route path={`/${sessionUser.id}/homepage`}>
+                <UserHomePage />
+              </Route>
+              <Route>
+                <UploadImage />
+              </Route>
+            </Switch>
+          )}
         </Switch>
       )}
     </>
