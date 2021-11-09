@@ -16,7 +16,12 @@ const Navigation = ({ isLoaded }) => {
   };
   let sessionLinks;
   if (sessionUser) {
-    sessionLinks = <button onClick={logout}>Log Out</button>;
+    sessionLinks = (
+      <>
+        <NavLink to={`${sessionUser.id}/upload`}>Upload</NavLink>
+        <button onClick={logout}>Log Out</button>
+      </>
+    );
   } else {
     sessionLinks = (
       <>
