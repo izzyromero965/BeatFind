@@ -31,9 +31,14 @@ export const removeImage = (imageId) => ({
 
 export const getImages = () => async (dispatch) => {
   const res = await csrfFetch("/api/images");
-  console.log(res);
   const images = await res.json();
-  console.log(images);
+  dispatch(loadImages(images));
+  return images;
+};
+
+export const getAlbumsImages = (id) => async (dispatch) => {
+  const res = await csrfFetch(`/api/albums/${id}`);
+  const images = await res.json();
   dispatch(loadImages(images));
   return images;
 };

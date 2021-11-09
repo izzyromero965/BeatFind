@@ -7,6 +7,8 @@ import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import UserHomePage from "./components/UserHomePage/UserHomePage";
 import UploadImage from "./components/UploadImage/UploadImage.js";
+import ProfilePage from "./components/ProfilePage";
+import AlbumPage from "./components/AlbumPage";
 
 function App() {
   const sessionUser = useSelector((state) => state.session.user);
@@ -31,11 +33,18 @@ function App() {
               <Route path={`/${sessionUser.id}/homepage`}>
                 <UserHomePage />
               </Route>
-              <Route>
+              <Route path={`/${sessionUser.id}/upload`}>
                 <UploadImage />
+              </Route>
+              <Route path={`/${sessionUser.username}/profile`}>
+                <ProfilePage />
+              </Route>
+              <Route path={`/albums/:id`}>
+                <AlbumPage />
               </Route>
             </Switch>
           )}
+          <Route>404 not found!</Route>
         </Switch>
       )}
     </>

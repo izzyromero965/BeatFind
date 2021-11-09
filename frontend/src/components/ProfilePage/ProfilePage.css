@@ -1,0 +1,7 @@
+.albums-container {
+  display: flex;
+  height: 10rem;
+  background-color: purple;
+  justify-content: center;
+  padding: 3rem;
+}

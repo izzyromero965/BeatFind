@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const asyncHandler = require("express-async-handler");
 
-const { Album } = require("../../db/models");
+const { Album, Image } = require("../../db/models");
 
 router.get(
   "/",
@@ -13,6 +13,19 @@ router.get(
   })
 );
 
+router.get(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    console.log("I'm in the routeeeeee");
+    const images = await Image.findAll({
+      where: {
+        albumId: id,
+      },
+    });
+    res.json(images);
+  })
+);
 
 router.delete(
   "/:id",

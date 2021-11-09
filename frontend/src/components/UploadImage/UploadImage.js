@@ -18,7 +18,6 @@ const UploadImage = () => {
   useEffect(async () => {
     const userAlbums = await dispatch(getUserAlbums(sessionUser.id));
     setAlbums(userAlbums);
-    console.log(userAlbums);
   }, [dispatch]);
 
   const reset = () => {

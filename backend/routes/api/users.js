@@ -41,13 +41,6 @@ router.post(
   })
 );
 
-//Home Page:
-
-router.get("/:id(\\d+)/homepage", requireAuth, async (req, res, next) => {
-  const { userId } = req.session.auth;
-  console.log("helloooooo from homepage!", userId);
-});
-
 router.get(
   "/:id/albums",
   asyncHandler(async (req, res) => {
@@ -62,6 +55,7 @@ router.get(
   })
 );
 
+
 router.get(
   "/:id/images",
   asyncHandler(async (req, res) => {
@@ -71,7 +65,6 @@ router.get(
         userId: id,
       },
     });
-    console.log(images);
     res.json(images);
   })
 );

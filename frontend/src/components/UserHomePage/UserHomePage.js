@@ -8,12 +8,10 @@ const UserHomePage = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const imageObj = useSelector((state) => state.imageState.images);
   const images = Object.values(imageObj);
-  console.log("imageslolololol", images);
 
   useEffect(() => {
     dispatch(getImages());
   }, [dispatch]);
-  console.log(imageObj);
 
   return (
     <div className="homepage-container">
