@@ -2,11 +2,12 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { User } = require("../../db/models");
+const { User, Album, Image } = require("../../db/models");
 
 const router = express.Router();
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
+
 const validateSignup = [
   check("email")
     .exists({ checkFalsy: true })
@@ -40,11 +41,32 @@ router.post(
   })
 );
 
-//Home Page:
+router.get(
+  "/:id/albums",
+  asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const albums = await Album.findAll({
+      where: {
+        userId: id,
+      },
+    });
+    console.log(albums);
+    res.json(albums);
+  })
+);
 
-router.get("/:id(\\d+)/homepage", requireAuth, async (req, res, next) => {
-  const { userId } = req.session.auth;
-  console.log("helloooooo from homepage!", userId);
-});
+
+router.get(
+  "/:id/images",
+  asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const images = await Image.findAll({
+      where: {
+        userId: id,
+      },
+    });
+    res.json(images);
+  })
+);
 
 module.exports = router;

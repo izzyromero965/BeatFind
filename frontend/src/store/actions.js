@@ -31,9 +31,14 @@ export const removeImage = (imageId) => ({
 
 export const getImages = () => async (dispatch) => {
   const res = await csrfFetch("/api/images");
-  console.log(res);
   const images = await res.json();
-  console.log(images);
+  dispatch(loadImages(images));
+  return images;
+};
+
+export const getAlbumsImages = (id) => async (dispatch) => {
+  const res = await csrfFetch(`/api/albums/${id}`);
+  const images = await res.json();
   dispatch(loadImages(images));
   return images;
 };
@@ -51,7 +56,7 @@ export const uploadImage = (payload) => async (dispatch) => {
 };
 
 export const editImage = (payload, id) => async (dispatch) => {
-  const res = await csrfFetch(`/api/items/${id}`, {
+  const res = await csrfFetch(`/api/images/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
@@ -59,6 +64,21 @@ export const editImage = (payload, id) => async (dispatch) => {
   const updatedImage = await res.json();
   dispatch(updateImage(updatedImage));
   return updatedImage;
+};
+
+export const getUserImages = (id) => async (dispatch) => {
+  const res = await csrfFetch(`/api/users/${id}/images`);
+  const images = await res.json();
+  dispatch(loadImages(images));
+  return images;
+};
+
+export const deleteImage = (id) => async (dispatch) => {
+  const res = await csrfFetch(`/api/images/${id}`, {
+    method: "DELETE",
+  });
+  dispatch(removeImages(id));
+  return res;
 };
 
 const initialState = { images: {} };

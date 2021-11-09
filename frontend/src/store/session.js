@@ -37,7 +37,6 @@ export const signupUser = (payload) => async (dispatch) => {
     body: JSON.stringify(payload),
   });
   const data = await res.json();
-  console.log(data);
   dispatch(setUser(data.user));
   return res;
 };

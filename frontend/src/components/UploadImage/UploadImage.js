@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { addImages } from "../../store/actions";
 import { uploadImage } from "../../store/actions";
+import { getUserAlbums } from "../../store/album";
 import "./UploadImage.css";
 
 const UploadImage = () => {
@@ -12,6 +13,12 @@ const UploadImage = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [content, setContent] = useState("");
   const [albumId, setAlbumId] = useState();
+  const [albums, setAlbums] = useState([]);
+
+  useEffect(async () => {
+    const userAlbums = await dispatch(getUserAlbums(sessionUser.id));
+    setAlbums(userAlbums);
+  }, [dispatch]);
 
   const reset = () => {
     setImageUrl("");
@@ -52,8 +59,17 @@ const UploadImage = () => {
             placeholder="Add a description"
             rows="10"
           ></textarea>
-          <select>
-              
+          <select value={albumId} onChange={(e) => setAlbumId(e.target.value)}>
+            <option value={albumId} key={albumId}>
+              none
+            </option>
+            {albums?.map((album) => {
+              return (
+                <option value={album.id} key={album.id}>
+                  {album.title}
+                </option>
+              );
+            })}
           </select>
           <button type="submit">Upload</button>
         </form>

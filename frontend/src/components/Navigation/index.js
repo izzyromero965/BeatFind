@@ -15,14 +15,28 @@ const Navigation = ({ isLoaded }) => {
     dispatch(sessionActions.logoutUser());
   };
   let sessionLinks;
+  let homeLink;
   if (sessionUser) {
+    homeLink = (
+      <NavLink className="nav-link" to={`/${sessionUser.id}/homepage`}>
+        Home
+      </NavLink>
+    );
     sessionLinks = (
       <>
-        <NavLink to={`${sessionUser.id}/upload`}>Upload</NavLink>
+        <NavLink to={`/${sessionUser.username}/profile`}>
+          {sessionUser.username}
+        </NavLink>
+        <NavLink to={`/${sessionUser.id}/upload`}>Upload</NavLink>
         <button onClick={logout}>Log Out</button>
       </>
     );
   } else {
+    homeLink = (
+      <NavLink className="nav-link" exact to="/">
+        Home
+      </NavLink>
+    );
     sessionLinks = (
       <>
         <LoginFormModal />
@@ -35,11 +49,7 @@ const Navigation = ({ isLoaded }) => {
 
   return (
     <nav className="navbar">
-      <div>
-        <NavLink className="nav-link" exact to="/">
-          Home
-        </NavLink>
-      </div>
+      <div>{isLoaded && homeLink}</div>
       <div>{isLoaded && sessionLinks}</div>
     </nav>
   );
