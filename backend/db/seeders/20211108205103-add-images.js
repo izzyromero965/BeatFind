@@ -23,6 +23,33 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          userId: 1,
+          albumId: 2,
+          imageUrl:
+            "https://www.udiscovermusic.com/wp-content/uploads/2018/10/Slipknot-Day-Of-The-Gusano-press-shot-web-optimised-1000.jpg",
+          content: "Clown 2020",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          userId: 1,
+          albumId: 2,
+          imageUrl:
+            "https://cmg-cmg-tv-10090-prod.cdn.arcpublishing.com/resizer/ExKfGHfQQUEOZtACFHBSZWyYHP4=/1440x810/filters:format(jpg):quality(70)/d1hfln2sfez66z.cloudfront.net/11-04-2021/t_c0433dc9e0c34f8f8843a12b3bd82098_name_Firefighters___Fans_set_fire_to_lawn_during_Slipknot_concert_in_Phoenix_Poster.jpg",
+          content: "Number 7, Richmond VA",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          userId: 1,
+          albumId: 2,
+          imageUrl:
+            "https://media2.fdncms.com/phx/imager/u/magnum/12345718/slipknot-phoenix-fire-crowd-ak-chin-pavilion-knotfest-roadshow-live-nation.jpg?cb=1635971541",
+          content: "Fire in the moshpit!",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );
