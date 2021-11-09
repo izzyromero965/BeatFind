@@ -52,6 +52,9 @@ const UploadImage = () => {
             placeholder="Add a description"
             rows="10"
           ></textarea>
+          <select>
+              
+          </select>
           <button type="submit">Upload</button>
         </form>
       </div>
