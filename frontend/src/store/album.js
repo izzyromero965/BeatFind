@@ -28,7 +28,7 @@ export const updateAlbums = (album) => ({
 });
 
 export const getUserAlbums = (id) => async (dispatch) => {
-  const res = await csrfFetch(`api/users/${id}/albums`);
+  const res = await csrfFetch(`/api/users/${id}/albums`);
   const albums = await res.json();
   dispatch(loadAlbums(albums));
   return albums;
@@ -75,7 +75,7 @@ const albumReducer = (state = initialState, action) => {
       });
       return newState;
     case ADD_ALBUMS:
-    case UPDATE_IMAGES:
+    case UPDATE_ALBUMS:
       return {
         ...state,
         albums: {
