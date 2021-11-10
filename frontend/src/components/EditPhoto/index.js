@@ -5,12 +5,12 @@ import { getUserAlbums } from "../../store/album";
 import "./EditPhoto.css";
 
 const EditPhoto = ({ id }) => {
+  console.log("what is the Id again1", id);
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [content, setContent] = useState("");
   const [albumId, setAlbumId] = useState();
   const [albums, setAlbums] = useState([]);
-
   useEffect(async () => {
     const userAlbums = await dispatch(getUserAlbums(sessionUser.id));
     setAlbums(userAlbums);
@@ -21,8 +21,9 @@ const EditPhoto = ({ id }) => {
     const payload = {
       content,
       albumId,
+      id,
     };
-    return dispatch(imageActions.editImage({ payload, id }));
+    return dispatch(imageActions.editImage({ payload }));
   };
 
   return (

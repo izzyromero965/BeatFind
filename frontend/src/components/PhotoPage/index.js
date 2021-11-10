@@ -2,18 +2,16 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getImages } from "../../store/actions";
 import { useParams } from "react-router";
-import { Modal } from "../../context/Modal";
 
 import "./PhotoPage.css";
-import EditPhoto from "../EditPhoto";
-import DeleteImage from "../DeletePhoto";
+import EditPhotoModal from "../EditPhoto/EditPhotoModal";
+import DeletePhotoModal from "../DeletePhoto/DeletePhotoModal";
 
 const PhotoPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [image, setImage] = useState();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [showModal, setShowModal] = useState(false);
 
   const oneImage = useSelector((state) => state.imageState.images[id]);
   console.log(oneImage);
@@ -29,18 +27,8 @@ const PhotoPage = () => {
         </div>
         <div className="photoDescription">
           <p>{oneImage.content}</p>
-          <button onClick={() => setShowModal(true)}>Edit</button>
-          {showModal && (
-            <Modal onClose={() => setShowModal(false)}>
-              <EditPhoto id={id} />
-            </Modal>
-          )}
-          <button onClick={() => setShowModal(true)}>Delete</button>
-          {showModal && (
-            <Modal onClose={() => setShowModal(false)}>
-              <DeleteImage id={id} />
-            </Modal>
-          )}
+          <EditPhotoModal id={+id} />
+          <DeletePhotoModal id={+id} />
         </div>
       </div>
     )

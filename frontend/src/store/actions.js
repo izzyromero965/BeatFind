@@ -63,8 +63,9 @@ export const uploadImage = (payload) => async (dispatch) => {
   return newImage;
 };
 
-export const editImage = (payload, id) => async (dispatch) => {
-  const res = await csrfFetch(`/api/images/${id}`, {
+export const editImage = (payload) => async (dispatch) => {
+  console.log("what is the Id again2", payload.id);
+  const res = await csrfFetch(`/api/images/${payload.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
