@@ -22,9 +22,9 @@ export const addAlbum = (newAlbum) => ({
   newAlbum,
 });
 
-export const updateAlbums = (album) => ({
+export const updateAlbums = (newAlbum) => ({
   type: UPDATE_ALBUMS,
-  album,
+  newAlbum,
 });
 
 export const getUserAlbums = (id) => async (dispatch) => {
@@ -46,8 +46,8 @@ export const createAlbum = (payload) => async (dispatch) => {
   return newAlbum;
 };
 
-export const editAlbum = (payload, id) => async (dispatch) => {
-  const res = await csrfFetch(`/api/albums/${id}`, {
+export const editAlbum = (payload) => async (dispatch) => {
+  const res = await csrfFetch(`/api/albums/${payload.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),

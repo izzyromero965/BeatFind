@@ -1,5 +1,8 @@
 .images {
+  padding-top: 8rem;
+  padding-bottom: 3rem;
   display: flex;
+  flex-wrap: wrap;
   height: 100%;
   gap: 1rem;
   justify-content: center;
