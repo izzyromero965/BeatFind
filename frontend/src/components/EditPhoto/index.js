@@ -8,7 +8,6 @@ const EditPhoto = ({ id }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [content, setContent] = useState("");
-  const [errors, setErrors] = useState([]);
   const [albumId, setAlbumId] = useState();
   const [albums, setAlbums] = useState([]);
 

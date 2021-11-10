@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react";
-import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
-import { addImages } from "../../store/actions";
 import { uploadImage } from "../../store/actions";
 import { getUserAlbums } from "../../store/album";
 import "./UploadImage.css";

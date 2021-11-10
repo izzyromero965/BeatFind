@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { getAlbumsImages } from "../../store/actions";
 import { Link } from "react-router-dom";
-
-import "./AlbumPage.css";
-
-const AlbumPage = () => {
-  const { id } = useParams();
+import { getUntitledImages } from "../../store/actions";
+import "./UntitledImage.css";
+const UntitledImages = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [AlbumImages, setAlbumImages] = useState([]);
 
   useEffect(async () => {
-    const returnedFromDispatch = await dispatch(getAlbumsImages(id));
+    const returnedFromDispatch = await dispatch(
+      getUntitledImages(sessionUser.id)
+    );
     console.log(returnedFromDispatch);
     setAlbumImages(returnedFromDispatch);
   }, [dispatch]);
@@ -39,5 +38,4 @@ const AlbumPage = () => {
     </div>
   );
 };
-
-export default AlbumPage;
+export default UntitledImages;

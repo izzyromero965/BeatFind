@@ -13,6 +13,20 @@ router.get(
   })
 );
 
+router.get(
+  "/:id/null",
+  asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const images = await Image.findAll({
+      where: {
+        albumId: null,
+        userId: id,
+      },
+    });
+    res.json(images);
+  })
+);
+
 router.delete(
   "/:id",
   asyncHandler(async (req, res) => {

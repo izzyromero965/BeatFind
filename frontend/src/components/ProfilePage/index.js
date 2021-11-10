@@ -22,7 +22,7 @@ const ProfilePage = () => {
     <div className="profile-container">
       <div className="profile header"></div>
       <div className="albums-container">
-        <Link to={`/${sessionUser.username}/myImages`}>All My Images</Link>
+        <Link to={`/${sessionUser.username}/untitled`}>Untitled Images</Link>
         {albums.map((album) => {
           return (
             <Link
