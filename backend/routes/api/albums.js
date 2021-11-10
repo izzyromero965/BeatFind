@@ -64,7 +64,7 @@ router.put(
     const album = await Album.findByPk(id);
     const err = new Error("Album not found!");
     if (album) {
-      await Album.update({
+      await album.update({
         title,
       });
 

@@ -10,7 +10,7 @@ const DeleteImage = ({ id }) => {
   const removeImage = (e) => {
     e.preventDefault();
     dispatch(imageActions.deleteImage(+id));
-    history.push(`/${sessionUser.username}/profile`);
+    return history.push(`/${sessionUser.username}/profile`);
   };
 
   return (
