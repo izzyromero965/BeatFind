@@ -17,7 +17,8 @@ router.delete(
   "/:id",
   asyncHandler(async (req, res) => {
     const { id } = req.params;
-    const image = await Image.findByPK(id);
+    console.log("what is the stupid id", id);
+    const image = await Image.findByPk(id);
     await image.destroy();
     res.send("Image deleted successfully!");
   })
@@ -37,7 +38,7 @@ router.put(
   asyncHandler(async (req, res, next) => {
     const { id } = req.params;
     const { albumId, content } = req.body;
-    const image = await Image.findByPK(id);
+    const image = await Image.findByPk(id);
     const err = new Error("Image not found!");
     if (image) {
       await image.update({

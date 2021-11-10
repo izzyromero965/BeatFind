@@ -30,11 +30,6 @@ export const updateImage = (image) => ({
   image,
 });
 
-export const removeImage = (imageId) => ({
-  type: REMOVE_IMAGES,
-  imageId,
-});
-
 export const getImages = () => async (dispatch) => {
   const res = await csrfFetch("/api/images");
   const images = await res.json();
@@ -78,13 +73,6 @@ export const getUserImages = (id) => async (dispatch) => {
   dispatch(loadImages(images));
   return images;
 };
-
-// export const getOneImage = (id) => async (dispatch) => {
-//   const res = await csrfFetch(`/api/images/${id}`);
-//   const image = await res.json();
-//   dispatch(loadImages(id));
-//   return image;
-// };
 
 export const deleteImage = (id) => async (dispatch) => {
   const res = await csrfFetch(`/api/images/${id}`, {
