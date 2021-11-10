@@ -50,6 +50,7 @@ router.get(
 router.put(
   "/:id",
   asyncHandler(async (req, res, next) => {
+    console.log("we got here boiii");
     const { id } = req.params;
     const { albumId, content } = req.body;
     const image = await Image.findByPk(id);
@@ -60,7 +61,7 @@ router.put(
         content,
       });
 
-      res.json({ image });
+      res.json(image);
     } else {
       next(err);
     }

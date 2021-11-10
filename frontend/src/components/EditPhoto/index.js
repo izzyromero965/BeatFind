@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import * as imageActions from "../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserAlbums } from "../../store/album";
+import { useHistory } from "react-router";
 import "./EditPhoto.css";
 
 const EditPhoto = ({ id }) => {
   console.log("what is the Id again1", id);
   const dispatch = useDispatch();
+  // const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const [content, setContent] = useState("");
   const [albumId, setAlbumId] = useState();
@@ -23,7 +25,8 @@ const EditPhoto = ({ id }) => {
       albumId,
       id,
     };
-    return dispatch(imageActions.editImage({ payload }));
+    return dispatch(imageActions.editImage(payload));
+    // history.push("/")
   };
 
   return (
@@ -37,7 +40,7 @@ const EditPhoto = ({ id }) => {
           rows="10"
         ></textarea>
         <select value={albumId} onChange={(e) => setAlbumId(e.target.value)}>
-          <option value={albumId} key={albumId}>
+          <option value={null} key={null}>
             none
           </option>
           {albums?.map((album) => {

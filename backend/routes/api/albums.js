@@ -68,7 +68,7 @@ router.put(
         title,
       });
 
-      res.json({ album });
+      res.json(album);
     } else {
       next(err);
     }

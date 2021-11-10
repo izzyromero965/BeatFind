@@ -25,9 +25,9 @@ export const addImages = (newImage) => ({
   newImage,
 });
 
-export const updateImage = (image) => ({
+export const updateImage = (newImage) => ({
   type: UPDATE_IMAGES,
-  image,
+  newImage,
 });
 
 export const getImages = () => async (dispatch) => {
@@ -102,6 +102,7 @@ const imageReducer = (state = initialState, action) => {
       return newState;
     case ADD_IMAGES:
     case UPDATE_IMAGES:
+      console.log("hello123", action.newImage);
       return {
         ...state,
         images: {
