@@ -1,0 +1,6 @@
+.footer-container {
+  position: absolute;
+  display: flex;
+  bottom: 0px;
+  height: 10rem;
+}

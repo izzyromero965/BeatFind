@@ -18,15 +18,15 @@ const Navigation = ({ isLoaded }) => {
   let homeLink;
   if (sessionUser) {
     homeLink = (
-      <NavLink className="nav-link" to={`/${sessionUser.id}/homepage`}>
-        Home
-      </NavLink>
+      <>
+        <NavLink className="nav-link" to={`/${sessionUser.id}/homepage`}>
+          Home
+        </NavLink>
+        <NavLink to={`/${sessionUser.username}/profile`}>Profile</NavLink>
+      </>
     );
     sessionLinks = (
       <>
-        <NavLink to={`/${sessionUser.username}/profile`}>
-          {sessionUser.username}
-        </NavLink>
         <NavLink to={`/${sessionUser.id}/upload`}>Upload</NavLink>
         <button onClick={logout}>Log Out</button>
       </>

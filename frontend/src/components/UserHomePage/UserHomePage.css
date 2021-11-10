@@ -1,13 +1,32 @@
+.homepage-container {
+  background-color: rgb(209, 209, 209);
+}
+
 .images {
   padding-top: 8rem;
   padding-bottom: 3rem;
   display: flex;
   flex-wrap: wrap;
   height: 100%;
-  gap: 1rem;
+  width: 100%;
   justify-content: center;
+  align-content: center;
 }
 
 .homepageImg {
   height: 15rem;
+  width: 25rem;
+}
+
+.homepageImg:hover {
+  filter: brightness(70%);
+  transition: all 0.5s ease;
+  transform: scale(1.1);
+}
+
+.bottomLeft {
+  position: relative;
+  bottom: 25px;
+  left: 10px;
+  color: white;
 }

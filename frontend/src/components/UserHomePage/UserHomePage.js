@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getImages } from "../../store/actions";
+import { Link } from "react-router-dom";
 import "./UserHomePage.css";
 
 const UserHomePage = () => {
@@ -18,11 +19,17 @@ const UserHomePage = () => {
       <div className="images">
         {images.map((image) => {
           return (
-            <img
-              src={image.imageUrl}
-              className="homepageImg"
+            <Link
+              to={`/${sessionUser.username}/photos/${image.id}`}
               key={image.id}
-            ></img>
+            >
+              <img
+                src={image.imageUrl}
+                className="homepageImg"
+                key={image.id}
+              />
+              <div className="bottomLeft">{image.content}</div>
+            </Link>
           );
         })}
       </div>
