@@ -76,6 +76,7 @@ const albumReducer = (state = initialState, action) => {
       return newState;
     case ADD_ALBUMS:
     case UPDATE_ALBUMS:
+      console.log("this is the goddamn action", action.newAlbum);
       return {
         ...state,
         albums: {

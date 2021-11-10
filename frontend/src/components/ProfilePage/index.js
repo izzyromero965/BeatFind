@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import "./ProfilePage.css";
 import DeleteAlbumModal from "../DeleteAlbum/DeleteAlbumModal";
 import EditAlbumModal from "../EditAlbum/EditAlbumModal";
+import CreateAlbumModal from "../CreateAlbum/CreateAlbumModal";
 const ProfilePage = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -23,6 +24,7 @@ const ProfilePage = () => {
     <div className="profile-container">
       <div className="profile header"></div>
       <div className="albums-container">
+        <CreateAlbumModal />
         <Link to={`/${sessionUser.username}/untitled`}>Untitled Images</Link>
         {albums.map((album) => {
           return (
