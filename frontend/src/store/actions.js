@@ -4,6 +4,12 @@ const LOAD_IMAGES = "images/loadImages";
 const ADD_IMAGES = "images/addImages";
 const REMOVE_IMAGES = "images/removeImages";
 const UPDATE_IMAGES = "images/updateImages";
+const LOAD_ONEIMAGE = "images/loadOneImage";
+
+const loadOneImage = (imageId) => ({
+  type: LOAD_ONEIMAGE,
+  imageId,
+});
 
 const removeImages = (imageId) => ({
   type: REMOVE_IMAGES,
@@ -72,6 +78,13 @@ export const getUserImages = (id) => async (dispatch) => {
   dispatch(loadImages(images));
   return images;
 };
+
+// export const getOneImage = (id) => async (dispatch) => {
+//   const res = await csrfFetch(`/api/images/${id}`);
+//   const image = await res.json();
+//   dispatch(loadImages(id));
+//   return image;
+// };
 
 export const deleteImage = (id) => async (dispatch) => {
   const res = await csrfFetch(`/api/images/${id}`, {

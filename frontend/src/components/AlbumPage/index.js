@@ -3,6 +3,7 @@ import * as AlbumActions from "../../store/album";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { getAlbumsImages } from "../../store/actions";
+import { Link } from "react-router-dom";
 
 import "./AlbumPage.css";
 
@@ -23,7 +24,13 @@ const AlbumPage = () => {
       <div className="images-container">
         {AlbumImages.map((image) => {
           return (
-            <img src={image.imageUrl} key={image.id} className="albumImg"></img>
+            <Link to={`/${sessionUser.username}/photos/${image.id}`}>
+              <img
+                src={image.imageUrl}
+                key={image.id}
+                className="albumImg"
+              ></img>
+            </Link>
           );
         })}
       </div>

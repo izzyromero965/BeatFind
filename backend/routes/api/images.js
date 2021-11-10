@@ -23,6 +23,15 @@ router.delete(
   })
 );
 
+router.get(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const image = await Image.findByPk(id);
+    res.json({ image });
+  })
+);
+
 router.put(
   "/:id",
   asyncHandler(async (req, res, next) => {

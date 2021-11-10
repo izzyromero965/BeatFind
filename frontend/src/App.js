@@ -9,6 +9,7 @@ import UserHomePage from "./components/UserHomePage/UserHomePage";
 import UploadImage from "./components/UploadImage/UploadImage.js";
 import ProfilePage from "./components/ProfilePage";
 import AlbumPage from "./components/AlbumPage";
+import PhotoPage from "./components/PhotoPage";
 
 function App() {
   const sessionUser = useSelector((state) => state.session.user);
@@ -41,6 +42,9 @@ function App() {
               </Route>
               <Route path={`/albums/:id`}>
                 <AlbumPage />
+              </Route>
+              <Route path={`/${sessionUser.username}/photos/:id`}>
+                <PhotoPage />
               </Route>
             </Switch>
           )}
