@@ -13,22 +13,47 @@ router.get(
   })
 );
 
+router.get(
+  "/:id/null",
+  asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const images = await Image.findAll({
+      where: {
+        albumId: null,
+        userId: id,
+      },
+    });
+    res.json(images);
+  })
+);
+
 router.delete(
   "/:id",
   asyncHandler(async (req, res) => {
     const { id } = req.params;
-    const image = await Image.findByPK(id);
+    console.log("what is the stupid id", id);
+    const image = await Image.findByPk(id);
     await image.destroy();
     res.send("Image deleted successfully!");
+  })
+);
+
+router.get(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const image = await Image.findByPk(id);
+    res.json({ image });
   })
 );
 
 router.put(
   "/:id",
   asyncHandler(async (req, res, next) => {
+    console.log("we got here boiii");
     const { id } = req.params;
     const { albumId, content } = req.body;
-    const image = await Image.findByPK(id);
+    const image = await Image.findByPk(id);
     const err = new Error("Image not found!");
     if (image) {
       await image.update({
@@ -36,7 +61,7 @@ router.put(
         content,
       });
 
-      res.json({ image });
+      res.json(image);
     } else {
       next(err);
     }

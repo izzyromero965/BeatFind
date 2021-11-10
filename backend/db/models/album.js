@@ -14,6 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     });
     Album.hasMany(models.Image, {
       foreignKey: "albumId",
+      onDelete: "cascade",
+      hooks: true,
     });
   };
   return Album;

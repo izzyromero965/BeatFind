@@ -4,6 +4,12 @@ const LOAD_IMAGES = "images/loadImages";
 const ADD_IMAGES = "images/addImages";
 const REMOVE_IMAGES = "images/removeImages";
 const UPDATE_IMAGES = "images/updateImages";
+const LOAD_ONEIMAGE = "images/loadOneImage";
+
+const loadOneImage = (imageId) => ({
+  type: LOAD_ONEIMAGE,
+  imageId,
+});
 
 const removeImages = (imageId) => ({
   type: REMOVE_IMAGES,
@@ -19,18 +25,20 @@ export const addImages = (newImage) => ({
   newImage,
 });
 
-export const updateImage = (image) => ({
+export const updateImage = (newImage) => ({
   type: UPDATE_IMAGES,
-  image,
-});
-
-export const removeImage = (imageId) => ({
-  type: REMOVE_IMAGES,
-  imageId,
+  newImage,
 });
 
 export const getImages = () => async (dispatch) => {
   const res = await csrfFetch("/api/images");
+  const images = await res.json();
+  dispatch(loadImages(images));
+  return images;
+};
+
+export const getUntitledImages = (id) => async (dispatch) => {
+  const res = await csrfFetch(`/api/images/${id}/null`);
   const images = await res.json();
   dispatch(loadImages(images));
   return images;
@@ -55,8 +63,9 @@ export const uploadImage = (payload) => async (dispatch) => {
   return newImage;
 };
 
-export const editImage = (payload, id) => async (dispatch) => {
-  const res = await csrfFetch(`/api/images/${id}`, {
+export const editImage = (payload) => async (dispatch) => {
+  console.log("what is the Id again2", payload.id);
+  const res = await csrfFetch(`/api/images/${payload.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
@@ -93,6 +102,7 @@ const imageReducer = (state = initialState, action) => {
       return newState;
     case ADD_IMAGES:
     case UPDATE_IMAGES:
+      console.log("hello123", action.newImage);
       return {
         ...state,
         images: {
