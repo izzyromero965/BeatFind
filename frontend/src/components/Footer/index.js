@@ -6,10 +6,14 @@ const Footer = () => {
     <footer className="footer-container">
       <div className="footer-elements">
         <div className="icon-container">
-          <FaGithubSquare className="icon" />
-          <FaLinkedinIn className="icon" />
+          <h5>Created by Israel Romero</h5>
+          <a href="https://github.com/snakedreamz">
+            <FaGithubSquare className="icon" />
+          </a>
+          <a href="https://www.linkedin.com/in/israel-romero-917a54219/">
+            <FaLinkedinIn className="icon" />
+          </a>
         </div>
-        <h5>Created by Israel Romero</h5>
       </div>
     </footer>
   );
