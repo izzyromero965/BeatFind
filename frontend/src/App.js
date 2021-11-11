@@ -11,6 +11,7 @@ import ProfilePage from "./components/ProfilePage";
 import AlbumPage from "./components/AlbumPage";
 import PhotoPage from "./components/PhotoPage";
 import UntitledImages from "./components/UntitledImages";
+import AllMyPhotos from "./components/AllMyPhotos";
 // import Footer from "./components/Footer";
 
 function App() {
@@ -50,6 +51,9 @@ function App() {
               </Route>
               <Route path={`/${sessionUser.username}/untitled`}>
                 <UntitledImages />
+              </Route>
+              <Route path={`/${sessionUser.username}/allmyphotos`}>
+                <AllMyPhotos />
               </Route>
             </Switch>
           )}
