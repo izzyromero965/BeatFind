@@ -1,48 +1,12 @@
-.albums-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  height: 100%;
-  justify-content: center;
-  padding: 3rem;
-}
-.albums-container > a {
-  color: black;
-}
-.profilePic {
-  height: 7rem;
-}
-
-.profile-container {
-  padding-top: 2.5rem;
-}
-
 .profile-header {
   background: linear-gradient(0, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
   height: 15rem;
 }
-
 .banner-img {
   z-index: -1;
   height: 15rem;
   min-width: 100%;
   object-fit: cover;
-}
-
-.one-album {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 1rem;
-}
-
-.one-album > a {
-  color: black;
-}
-
-.albumCoverPic {
-  height: 8rem;
-  border-radius: 20px;
 }
 
 .subNavBar {
