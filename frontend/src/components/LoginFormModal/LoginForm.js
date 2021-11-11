@@ -18,9 +18,6 @@ function LoginForm() {
       async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
-        if (!errors.length >= 1) {
-          return history.push("/homepage");
-        }
       }
     );
   };
@@ -28,6 +25,7 @@ function LoginForm() {
   const loginDemoUser = (e) => {
     setCredential("Demo-lition");
     setPassword("password");
+    history.push("/homepage");
   };
   return (
     <div className="loginModal">
