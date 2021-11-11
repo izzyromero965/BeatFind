@@ -1,3 +1,28 @@
 .photoPageImage {
-  height: 35rem;
+  border-radius: 20px;
+  height: 26rem;
+}
+.photoHeader {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding-top: 5rem;
+  width: 100%;
+  height: 30rem;
+  background-color: rgba(0, 0, 0, 0.774);
+}
+
+.photoDescription {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modalBtns {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.modalBtns > button {
+  width: 5rem;
 }

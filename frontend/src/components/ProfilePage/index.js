@@ -36,8 +36,10 @@ const ProfilePage = () => {
               >
                 {album.title}
               </Link>
-              <EditAlbumModal id={album.id} key={""} />
-              <DeleteAlbumModal id={album.id} key={""} />
+              <div className="btnDiv">
+                <EditAlbumModal id={album.id} key={""} />
+                <DeleteAlbumModal id={album.id} key={""} />
+              </div>
             </div>
           );
         })}

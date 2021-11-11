@@ -68,3 +68,8 @@
   transition: all 0.5s ease;
   transform: scale(1.1);
 }
+
+.btnDiv {
+  display: flex;
+  gap: 0.5rem;
+}

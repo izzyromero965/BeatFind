@@ -27,17 +27,17 @@ const PhotoPage = () => {
     isLoaded && (
       <div className="photoPageContainer">
         <div className="photoHeader">
-          {<img src={image.imageUrl} className="photoPageImage"></img>}
+          <img src={image.imageUrl} className="photoPageImage"></img>
         </div>
         <div className="photoDescription">
-          <p>{image.content}</p>
-          {image.userId == sessionUser.id && (
-            <>
-              <EditPhotoModal id={+id} />
-              <DeletePhotoModal id={+id} />
-            </>
-          )}
+          <h3>{image.content}</h3>
         </div>
+        {image.userId == sessionUser?.id && (
+          <div className="modalBtns">
+            <EditPhotoModal id={+id} />
+            <DeletePhotoModal id={+id} />
+          </div>
+        )}
       </div>
     )
   );
