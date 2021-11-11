@@ -19,10 +19,7 @@ const UserHomePage = () => {
       <div className="images">
         {images.map((image) => {
           return (
-            <Link
-              to={`/${sessionUser.username}/photos/${image.id}`}
-              key={image.id}
-            >
+            <Link to={`/photos/${image.id}`} key={image.id}>
               <img
                 src={image.imageUrl}
                 className="homepageImg"

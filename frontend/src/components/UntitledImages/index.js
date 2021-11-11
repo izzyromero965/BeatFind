@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { getUntitledImages } from "../../store/actions";
+import Header from "../Header";
 import "./UntitledImage.css";
 const UntitledImages = () => {
   const dispatch = useDispatch();
@@ -19,13 +20,11 @@ const UntitledImages = () => {
 
   return (
     <div className="AlbumPageContainer">
+      <Header />
       <div className="images-container">
         {AlbumImages.map((image) => {
           return (
-            <Link
-              to={`/${sessionUser.username}/photos/${image.id}`}
-              key={image.id}
-            >
+            <Link to={`/photos/${image.id}`} key={image.id}>
               <img
                 src={image.imageUrl}
                 key={image.id}

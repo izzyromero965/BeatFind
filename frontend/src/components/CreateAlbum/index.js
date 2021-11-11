@@ -6,6 +6,7 @@ const CreateAlbum = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [title, setTitle] = useState("");
+  const [albumCoverUrl, setAlbumCoverUrl] = useState("");
 
   const reset = () => {
     setTitle("");
@@ -16,6 +17,7 @@ const CreateAlbum = () => {
     const payload = {
       userId: sessionUser.id,
       title,
+      albumCoverUrl,
     };
 
     const returnedFromDispatch = await dispatch(createAlbum(payload));
@@ -31,6 +33,15 @@ const CreateAlbum = () => {
         value={title}
         placeholder="album's title"
         name="albumTitle"
+        required
+      />
+      <input
+        type="text"
+        onChange={(e) => setAlbumCoverUrl(e.target.value)}
+        value={albumCoverUrl}
+        placeholder="Album picture url"
+        name="AlbumProfilePic"
+        required
       />
       <button type="submit">Submit</button>
     </form>

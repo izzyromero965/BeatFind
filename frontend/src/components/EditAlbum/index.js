@@ -5,15 +5,18 @@ import { getUserAlbums } from "../../store/album";
 
 const EditAlbum = ({ id }) => {
   const dispatch = useDispatch();
-//   const sessionUser = useSelector((state) => state.session.user);
-  const [title, setTitle] = useState("");
+  const albumState = useSelector((state) => state.albumState.albums[id]);
+  const [title, setTitle] = useState(albumState.title);
+  const [albumCoverUrl, setAlbumCoverUrl] = useState(albumState.albumCoverUrl);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const payload = {
       title,
       id,
+      albumCoverUrl,
     };
+    console.log(albumCoverUrl);
     return dispatch(AlbumActions.editAlbum(payload));
   };
 
@@ -25,6 +28,14 @@ const EditAlbum = ({ id }) => {
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Album Title"
       ></input>
+      <input
+        type="text"
+        onChange={(e) => setAlbumCoverUrl(e.target.value)}
+        value={albumCoverUrl}
+        placeholder="Album picture url"
+        name="AlbumProfilePic"
+      />
+
       <button type="submit">Submit</button>
     </form>
   );

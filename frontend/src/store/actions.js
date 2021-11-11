@@ -6,19 +6,18 @@ const REMOVE_IMAGES = "images/removeImages";
 const UPDATE_IMAGES = "images/updateImages";
 const LOAD_ONEIMAGE = "images/loadOneImage";
 
-const loadOneImage = (imageId) => ({
-  type: LOAD_ONEIMAGE,
-  imageId,
-});
+const loadOneImage = (image) => {
+  return { type: LOAD_ONEIMAGE, image };
+};
+
+export const loadImages = (images) => {
+  return { type: LOAD_IMAGES, images };
+};
 
 const removeImages = (imageId) => ({
   type: REMOVE_IMAGES,
   imageId,
 });
-
-export const loadImages = (images) => {
-  return { type: LOAD_IMAGES, images };
-};
 
 export const addImages = (newImage) => ({
   type: ADD_IMAGES,
@@ -75,6 +74,13 @@ export const editImage = (payload) => async (dispatch) => {
   return updatedImage;
 };
 
+export const getOneImage = (id) => async (dispatch) => {
+  const res = await csrfFetch(`/api/images/${id}`);
+  const image = await res.json();
+  dispatch(loadOneImage(image));
+  return image;
+};
+
 export const getUserImages = (id) => async (dispatch) => {
   const res = await csrfFetch(`/api/users/${id}/images`);
   const images = await res.json();
@@ -115,6 +121,9 @@ const imageReducer = (state = initialState, action) => {
       delete newState[action.imageId];
       return newState;
     }
+    // case LOAD_ONEIMAGE:
+    //   const newState2 = { ...state };
+
     default:
       return state;
   }

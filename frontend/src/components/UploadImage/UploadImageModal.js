@@ -1,22 +1,20 @@
 import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
-import CreateAlbum from "./index";
-import "./CreateAlbumModal.css";
+import UploadImage from "./index";
 
-function CreateAlbumModal() {
+function UploadImageModal() {
   const [showModal, setShowModal] = useState(false);
+
   return (
     <>
-      <button onClick={() => setShowModal(true)} className="new-albumBtn">
-        New Album
-      </button>
+      <button onClick={() => setShowModal(true)}>Upload</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <CreateAlbum />
+          <UploadImage />
         </Modal>
       )}
     </>
   );
 }
 
-export default CreateAlbumModal;
+export default UploadImageModal;

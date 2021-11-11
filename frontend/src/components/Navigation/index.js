@@ -1,18 +1,21 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LoginFormModal from "../LoginFormModal/index";
 import ProfileButton from "./ProfileButton";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import "./Navigation.css";
+import UploadImageModal from "../UploadImage/UploadImageModal";
 
 const Navigation = ({ isLoaded }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logoutUser());
+    return history.push("/");
   };
   let sessionLinks;
   let homeLink;
@@ -27,7 +30,7 @@ const Navigation = ({ isLoaded }) => {
     );
     sessionLinks = (
       <>
-        <NavLink to={`/${sessionUser.id}/upload`}>Upload</NavLink>
+        <UploadImageModal />
         <button onClick={logout}>Log Out</button>
       </>
     );

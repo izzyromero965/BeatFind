@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import * as AlbumActions from "../../store/album";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Header from "../Header/index";
 
 import "./ProfilePage.css";
 import DeleteAlbumModal from "../DeleteAlbum/DeleteAlbumModal";
@@ -22,13 +23,12 @@ const ProfilePage = () => {
 
   return (
     <div className="profile-container">
-      <div className="profile header"></div>
+      <Header />
       <div className="albums-container">
-        <CreateAlbumModal />
-        <Link to={`/${sessionUser.username}/untitled`}>Untitled Images</Link>
         {albums.map((album) => {
           return (
-            <div>
+            <div className="one-album">
+              <img className="albumCoverPic" src={album.albumCoverUrl}></img>
               <Link
                 to={`/albums/${album.id}`}
                 key={album.id}
@@ -36,8 +36,10 @@ const ProfilePage = () => {
               >
                 {album.title}
               </Link>
-              <EditAlbumModal id={album.id} key={""} />
-              <DeleteAlbumModal id={album.id} key={""} />
+              <div className="btnDiv">
+                <EditAlbumModal id={album.id} key={""} />
+                <DeleteAlbumModal id={album.id} key={""} />
+              </div>
             </div>
           );
         })}

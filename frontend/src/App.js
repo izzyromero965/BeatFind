@@ -6,12 +6,12 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import UserHomePage from "./components/UserHomePage/UserHomePage";
-import UploadImage from "./components/UploadImage/UploadImage.js";
 import ProfilePage from "./components/ProfilePage";
 import AlbumPage from "./components/AlbumPage";
 import PhotoPage from "./components/PhotoPage";
 import UntitledImages from "./components/UntitledImages";
-import Footer from "./components/Footer";
+import AllMyPhotos from "./components/AllMyPhotos";
+// import Footer from "./components/Footer";
 
 function App() {
   const sessionUser = useSelector((state) => state.session.user);
@@ -31,13 +31,13 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route path={`/photos/:id`}>
+            <PhotoPage />
+          </Route>
           {sessionUser && (
             <Switch>
               <Route path={`/${sessionUser.id}/homepage`}>
                 <UserHomePage />
-              </Route>
-              <Route path={`/${sessionUser.id}/upload`}>
-                <UploadImage />
               </Route>
               <Route path={`/${sessionUser.username}/profile`}>
                 <ProfilePage />
@@ -45,11 +45,11 @@ function App() {
               <Route path={`/albums/:id`}>
                 <AlbumPage />
               </Route>
-              <Route path={`/${sessionUser.username}/photos/:id`}>
-                <PhotoPage />
-              </Route>
               <Route path={`/${sessionUser.username}/untitled`}>
                 <UntitledImages />
+              </Route>
+              <Route path={`/${sessionUser.username}/allmyphotos`}>
+                <AllMyPhotos />
               </Route>
             </Switch>
           )}
@@ -57,7 +57,7 @@ function App() {
           <Route>404 not found!</Route>
         </Switch>
       )}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

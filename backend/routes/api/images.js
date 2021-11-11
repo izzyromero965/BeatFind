@@ -43,7 +43,7 @@ router.get(
   asyncHandler(async (req, res) => {
     const { id } = req.params;
     const image = await Image.findByPk(id);
-    res.json({ image });
+    res.json(image);
   })
 );
 
