@@ -8,7 +8,6 @@ router.get(
   "/",
   asyncHandler(async (req, res) => {
     const albums = await Album.findAll();
-    console.log(albums);
     res.json(albums);
   })
 );
@@ -17,7 +16,6 @@ router.get(
   "/:id",
   asyncHandler(async (req, res) => {
     const { id } = req.params;
-    console.log("I'm in the routeeeeee");
     const images = await Image.findAll({
       where: {
         albumId: id,

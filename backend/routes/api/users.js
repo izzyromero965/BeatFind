@@ -50,7 +50,6 @@ router.get(
         userId: id,
       },
     });
-    console.log(albums);
     res.json(albums);
   })
 );

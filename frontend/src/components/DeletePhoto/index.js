@@ -16,7 +16,7 @@ const DeleteImage = ({ id }) => {
   return (
     <div className="removeImageModal">
       <span>Are you sure you want to delete this image?</span>
-      <button onClick={removeImage}>Delete</button>
+      <button onClick={removeImage} className="deleteImageBtn">Delete</button>
     </div>
   );
 };

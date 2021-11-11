@@ -17,3 +17,7 @@ a {
 li {
   color: white;
 }
+
+.logoutBtn {
+  margin: 0.5rem;
+}

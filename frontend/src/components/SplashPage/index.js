@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 const SplashPage = () => {
   const routeChange = () => {
-    let path = "/signup";
+    let path = "/homepage";
     history.push(path);
   };
   const history = useHistory();
@@ -18,7 +18,7 @@ const SplashPage = () => {
             your favorite moments.
           </p>
           <button onClick={routeChange} className="description-signupBtn">
-            Start for free
+            Explore
           </button>
         </div>
       </div>

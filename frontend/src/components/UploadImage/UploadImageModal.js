@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Modal } from "../../context/Modal";
 import UploadImage from "./index";
+import "./UploadImage.css";
 
 function UploadImageModal() {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Upload</button>
+      <button onClick={() => setShowModal(true)} className="uploadButton">Upload</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <UploadImage />

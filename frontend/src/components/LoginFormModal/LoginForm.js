@@ -18,15 +18,25 @@ function LoginForm() {
       async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
+        if (!errors.length >= 1) {
+          return history.push("/homepage");
+        }
       }
     );
+  };
+
+  const loginDemoUser = (e) => {
+    setCredential("Demo-lition");
+    setPassword("password");
   };
   return (
     <div className="loginModal">
       <form onSubmit={handleSubmit} className="loginModalForm">
         <ul>
           {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
+            <li key={idx}>
+              <p>{error}</p>
+            </li>
           ))}
         </ul>
         <input
@@ -43,7 +53,12 @@ function LoginForm() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Log In</button>
+        <button type="submit" className="loginButton">
+          Log In
+        </button>
+        <button onClick={loginDemoUser} className="demoButton">
+          Demo User
+        </button>
       </form>
     </div>
   );

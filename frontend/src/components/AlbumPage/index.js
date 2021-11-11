@@ -15,7 +15,6 @@ const AlbumPage = () => {
 
   useEffect(async () => {
     const returnedFromDispatch = await dispatch(getAlbumsImages(id));
-    console.log(returnedFromDispatch);
     setAlbumImages(returnedFromDispatch);
   }, [dispatch]);
 

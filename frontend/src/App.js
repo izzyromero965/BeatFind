@@ -11,7 +11,7 @@ import AlbumPage from "./components/AlbumPage";
 import PhotoPage from "./components/PhotoPage";
 import UntitledImages from "./components/UntitledImages";
 import AllMyPhotos from "./components/AllMyPhotos";
-// import Footer from "./components/Footer";
+import Footer from "./components/Footer";
 
 function App() {
   const sessionUser = useSelector((state) => state.session.user);
@@ -34,11 +34,11 @@ function App() {
           <Route path={`/photos/:id`}>
             <PhotoPage />
           </Route>
+          <Route path={`/homepage`}>
+            <UserHomePage />
+          </Route>
           {sessionUser && (
             <Switch>
-              <Route path={`/${sessionUser.id}/homepage`}>
-                <UserHomePage />
-              </Route>
               <Route path={`/${sessionUser.username}/profile`}>
                 <ProfilePage />
               </Route>
@@ -57,7 +57,7 @@ function App() {
           <Route>404 not found!</Route>
         </Switch>
       )}
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

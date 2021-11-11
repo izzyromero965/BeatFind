@@ -1,0 +1,15 @@
+.EditImageModal {
+  display: flex;
+  padding: 2rem;
+  flex-direction: column;
+  width: 15rem;
+  border: none;
+}
+
+.EditImageForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+

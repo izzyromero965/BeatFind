@@ -8,7 +8,6 @@ router.get(
   "/",
   asyncHandler(async (req, res) => {
     const images = await Image.findAll();
-    console.log(images);
     res.json(images);
   })
 );
@@ -31,7 +30,6 @@ router.delete(
   "/:id",
   asyncHandler(async (req, res) => {
     const { id } = req.params;
-    console.log("what is the stupid id", id);
     const image = await Image.findByPk(id);
     await image.destroy();
     res.send("Image deleted successfully!");
@@ -50,7 +48,6 @@ router.get(
 router.put(
   "/:id",
   asyncHandler(async (req, res, next) => {
-    console.log("we got here boiii");
     const { id } = req.params;
     const { albumId, content } = req.body;
     const image = await Image.findByPk(id);

@@ -6,15 +6,17 @@ import { useHistory } from "react-router";
 import "./EditPhoto.css";
 
 const EditPhoto = ({ id }) => {
-  console.log("what is the Id again1", id);
   const dispatch = useDispatch();
   // const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const [content, setContent] = useState("");
   const [albumId, setAlbumId] = useState();
   const [albums, setAlbums] = useState([]);
+  const [image, setImage] = useState();
   useEffect(async () => {
     const userAlbums = await dispatch(getUserAlbums(sessionUser.id));
+    const image = await dispatch(imageActions.getOneImage(id));
+    setImage(image);
     setAlbums(userAlbums);
   }, [dispatch]);
 
@@ -51,7 +53,9 @@ const EditPhoto = ({ id }) => {
             );
           })}
         </select>
-        <button type="submit">Submit</button>
+        <button type="submit" className="submitEditBtn">
+          Submit
+        </button>
       </form>
     </div>
   );

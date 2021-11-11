@@ -13,14 +13,11 @@ const PhotoPage = () => {
   const [image, setImage] = useState();
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // const oneImage = useSelector((state) => state.imageState.images[id]);
-  // console.log(oneImage);
+
   useEffect(async () => {
     const oneImage = await dispatch(getOneImage(id));
     setImage(oneImage);
     setIsLoaded(true);
-    console.log(image);
-    // dispatch(getImages()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   return (

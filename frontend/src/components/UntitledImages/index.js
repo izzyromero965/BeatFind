@@ -14,7 +14,6 @@ const UntitledImages = () => {
     const returnedFromDispatch = await dispatch(
       getUntitledImages(sessionUser.id)
     );
-    console.log(returnedFromDispatch);
     setAlbumImages(returnedFromDispatch);
   }, [dispatch]);
 
