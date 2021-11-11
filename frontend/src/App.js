@@ -6,7 +6,6 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import UserHomePage from "./components/UserHomePage/UserHomePage";
-import UploadImage from "./components/UploadImage/UploadImage.js";
 import ProfilePage from "./components/ProfilePage";
 import AlbumPage from "./components/AlbumPage";
 import PhotoPage from "./components/PhotoPage";
@@ -37,9 +36,9 @@ function App() {
               <Route path={`/${sessionUser.id}/homepage`}>
                 <UserHomePage />
               </Route>
-              <Route path={`/${sessionUser.id}/upload`}>
+              {/* <Route path={`/${sessionUser.id}/upload`}>
                 <UploadImage />
-              </Route>
+              </Route> */}
               <Route path={`/${sessionUser.username}/profile`}>
                 <ProfilePage />
               </Route>
