@@ -9,7 +9,6 @@
   display: flex;
   padding: 2rem;
   flex-direction: column;
-  height: 13rem;
   width: 15rem;
   border: none;
 }
@@ -18,4 +17,38 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.loginButton {
+  display: flex;
+  color: #fff;
+  background-color: #009dff;
+  border-color: transparent;
+  padding: 1px 6px;
+  border-radius: 4px;
+  height: 2rem;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.demoButton {
+  display: flex;
+  color: #fff;
+  background-color: #009dff;
+  border-color: transparent;
+  padding: 1px 6px;
+  border-radius: 4px;
+  height: 2rem;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+input {
+  height: 2rem;
+}
+li > p {
+  color: coral;
 }

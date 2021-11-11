@@ -30,47 +30,44 @@ const UploadImage = () => {
       albumId,
       imageUrl,
       content,
-      //I need to create a new image. check the requirements from the backend route.
     };
 
     const returnedFromDispatch = await dispatch(uploadImage(newImage));
-    console.log(returnedFromDispatch);
+
     reset();
   };
 
   return (
     <div className="uploadImgContainer">
-      <div>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            onChange={(e) => setImageUrl(e.target.value)}
-            value={imageUrl}
-            placeholder="Image url"
-            name="imageUrl"
-          />
-          <textarea
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            name="content"
-            placeholder="Add a description"
-            rows="10"
-          ></textarea>
-          <select value={albumId} onChange={(e) => setAlbumId(e.target.value)}>
-            <option value={albumId} key={albumId}>
-              none
-            </option>
-            {albums?.map((album) => {
-              return (
-                <option value={album.id} key={album.id}>
-                  {album.title}
-                </option>
-              );
-            })}
-          </select>
-          <button type="submit">Upload</button>
-        </form>
-      </div>
+      <form onSubmit={handleSubmit} className="uploadImageForm">
+        <input
+          type="text"
+          onChange={(e) => setImageUrl(e.target.value)}
+          value={imageUrl}
+          placeholder="Image url"
+          name="imageUrl"
+        />
+        <textarea
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          name="content"
+          placeholder="Add a description"
+          rows="10"
+        ></textarea>
+        <select value={albumId} onChange={(e) => setAlbumId(e.target.value)}>
+          <option value={albumId} key={albumId}>
+            none
+          </option>
+          {albums?.map((album) => {
+            return (
+              <option value={album.id} key={album.id}>
+                {album.title}
+              </option>
+            );
+          })}
+        </select>
+        <button type="submit">Upload</button>
+      </form>
     </div>
   );
 };

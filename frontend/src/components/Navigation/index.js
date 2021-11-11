@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LoginFormModal from "../LoginFormModal/index";
-import ProfileButton from "./ProfileButton";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import "./Navigation.css";
@@ -22,17 +21,19 @@ const Navigation = ({ isLoaded }) => {
   if (sessionUser) {
     homeLink = (
       <>
-        <NavLink className="nav-link" to={`/${sessionUser.id}/homepage`}>
+        <NavLink className="nav-link" to={`/homepage`}>
           Home
         </NavLink>
         <NavLink to={`/${sessionUser.username}/profile`}>Profile</NavLink>
       </>
     );
     sessionLinks = (
-      <>
+      <div>
         <UploadImageModal />
-        <button onClick={logout}>Log Out</button>
-      </>
+        <button onClick={logout} className="logoutBtn">
+          Log Out
+        </button>
+      </div>
     );
   } else {
     homeLink = (

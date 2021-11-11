@@ -21,7 +21,6 @@ const CreateAlbum = () => {
     };
 
     const returnedFromDispatch = await dispatch(createAlbum(payload));
-    console.log(returnedFromDispatch);
     reset();
   };
 

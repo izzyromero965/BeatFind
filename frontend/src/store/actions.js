@@ -63,7 +63,6 @@ export const uploadImage = (payload) => async (dispatch) => {
 };
 
 export const editImage = (payload) => async (dispatch) => {
-  console.log("what is the Id again2", payload.id);
   const res = await csrfFetch(`/api/images/${payload.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -108,7 +107,6 @@ const imageReducer = (state = initialState, action) => {
       return newState;
     case ADD_IMAGES:
     case UPDATE_IMAGES:
-      console.log("hello123", action.newImage);
       return {
         ...state,
         images: {

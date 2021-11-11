@@ -34,11 +34,11 @@ function App() {
           <Route path={`/photos/:id`}>
             <PhotoPage />
           </Route>
+          <Route path={`/homepage`}>
+            <UserHomePage />
+          </Route>
           {sessionUser && (
             <Switch>
-              <Route path={`/${sessionUser.id}/homepage`}>
-                <UserHomePage />
-              </Route>
               <Route path={`/${sessionUser.username}/profile`}>
                 <ProfilePage />
               </Route>

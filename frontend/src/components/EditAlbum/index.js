@@ -16,7 +16,7 @@ const EditAlbum = ({ id }) => {
       id,
       albumCoverUrl,
     };
-    console.log(albumCoverUrl);
+
     return dispatch(AlbumActions.editAlbum(payload));
   };
 
