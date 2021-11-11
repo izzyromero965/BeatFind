@@ -11,7 +11,7 @@ import ProfilePage from "./components/ProfilePage";
 import AlbumPage from "./components/AlbumPage";
 import PhotoPage from "./components/PhotoPage";
 import UntitledImages from "./components/UntitledImages";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 
 function App() {
   const sessionUser = useSelector((state) => state.session.user);
@@ -57,7 +57,7 @@ function App() {
           <Route>404 not found!</Route>
         </Switch>
       )}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

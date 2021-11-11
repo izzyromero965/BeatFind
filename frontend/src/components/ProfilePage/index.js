@@ -22,13 +22,19 @@ const ProfilePage = () => {
 
   return (
     <div className="profile-container">
-      <div className="profile header"></div>
+      <div className="profile-header">
+        <img
+          src="https://busestoconcerts.com/wp-content/uploads/2017/11/concert.jpg"
+          className="banner-img"
+        ></img>
+      </div>
       <div className="albums-container">
-        <CreateAlbumModal />
         <Link to={`/${sessionUser.username}/untitled`}>Untitled Images</Link>
+        <CreateAlbumModal />
         {albums.map((album) => {
           return (
-            <div>
+            <div className="albums">
+              <img></img>
               <Link
                 to={`/albums/${album.id}`}
                 key={album.id}
