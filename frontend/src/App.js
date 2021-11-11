@@ -31,22 +31,19 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route path={`/photos/:id`}>
+            <PhotoPage />
+          </Route>
           {sessionUser && (
             <Switch>
               <Route path={`/${sessionUser.id}/homepage`}>
                 <UserHomePage />
               </Route>
-              {/* <Route path={`/${sessionUser.id}/upload`}>
-                <UploadImage />
-              </Route> */}
               <Route path={`/${sessionUser.username}/profile`}>
                 <ProfilePage />
               </Route>
               <Route path={`/albums/:id`}>
                 <AlbumPage />
-              </Route>
-              <Route path={`/${sessionUser.username}/photos/:id`}>
-                <PhotoPage />
               </Route>
               <Route path={`/${sessionUser.username}/untitled`}>
                 <UntitledImages />

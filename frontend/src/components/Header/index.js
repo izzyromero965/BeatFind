@@ -16,10 +16,10 @@ const Header = () => {
       <div className="subNavBar">
         <CreateAlbumModal />
         <Link to={`/${sessionUser.username}/untitled`} className="untitled">
-          Untitled Images
+          Photos without albums
         </Link>
-        <Link to={`/${sessionUser.username}/allMyPhotos`}>All my photos</Link>
-        <Link to={`/${sessionUser.username}/profile`}>My Albums</Link>
+        <Link to={`/${sessionUser.username}/allMyPhotos`}>Photostream</Link>
+        <Link to={`/${sessionUser.username}/profile`}>Albums</Link>
       </div>
     </>
   );

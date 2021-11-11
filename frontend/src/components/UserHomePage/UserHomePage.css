@@ -12,6 +12,7 @@
 .homepageImg {
   height: 15rem;
   width: 25rem;
+  border-radius: 20px;
 }
 
 .homepageImg:hover {

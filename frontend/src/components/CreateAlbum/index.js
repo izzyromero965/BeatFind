@@ -33,6 +33,7 @@ const CreateAlbum = () => {
         value={title}
         placeholder="album's title"
         name="albumTitle"
+        required
       />
       <input
         type="text"
@@ -40,6 +41,7 @@ const CreateAlbum = () => {
         value={albumCoverUrl}
         placeholder="Album picture url"
         name="AlbumProfilePic"
+        required
       />
       <button type="submit">Submit</button>
     </form>

@@ -25,10 +25,7 @@ const AlbumPage = () => {
       <div className="images-container">
         {AlbumImages.map((image) => {
           return (
-            <Link
-              to={`/${sessionUser.username}/photos/${image.id}`}
-              key={image.id}
-            >
+            <Link to={`/photos/${image.id}`} key={image.id}>
               <img
                 src={image.imageUrl}
                 key={image.id}
