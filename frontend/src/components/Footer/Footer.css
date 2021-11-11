@@ -1,18 +1,22 @@
 .footer-container {
   position: fixed;
   display: flex;
-  bottom: 0px;
+  justify-content: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4rem;
   width: 100%;
   background-color: #212124;
-  justify-content: center;
 }
 .icon-container {
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 .footer-elements {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   padding-top: 1rem;
 }
 h5 {
@@ -21,4 +25,5 @@ h5 {
 .icon {
   font-size: 30px;
   color: white;
+  padding-left: 1rem;
 }
