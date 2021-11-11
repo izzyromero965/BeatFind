@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserImages } from "../../store/actions";
+import { Link } from "react-router-dom";
 import "./AllMyPhotos.css";
 import Header from "../Header";
 
@@ -18,7 +19,12 @@ const AllMyPhotos = () => {
       <div className="image-container">
         {images.map((image) => {
           return (
-            <img src={image.imageUrl} key={image.id} className="image"></img>
+            <Link
+              to={`/${sessionUser.username}/photos/${image.id}`}
+              key={image.id}
+            >
+              <img src={image.imageUrl} key={image.id} className="image"></img>
+            </Link>
           );
         })}
       </div>

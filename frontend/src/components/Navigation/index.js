@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LoginFormModal from "../LoginFormModal/index";
 import ProfileButton from "./ProfileButton";
@@ -9,10 +9,12 @@ import "./Navigation.css";
 
 const Navigation = ({ isLoaded }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logoutUser());
+    return history.push("/");
   };
   let sessionLinks;
   let homeLink;
