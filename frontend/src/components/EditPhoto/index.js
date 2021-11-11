@@ -10,7 +10,7 @@ const EditPhoto = ({ id }) => {
   // const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const [content, setContent] = useState("");
-  const [albumId, setAlbumId] = useState();
+  const [albumId, setAlbumId] = useState(null);
   const [albums, setAlbums] = useState([]);
   const [image, setImage] = useState();
   useEffect(async () => {
@@ -42,7 +42,7 @@ const EditPhoto = ({ id }) => {
           rows="10"
         ></textarea>
         <select value={albumId} onChange={(e) => setAlbumId(e.target.value)}>
-          <option value={null} key={null}>
+          <option value={albumId} key={null}>
             none
           </option>
           {albums?.map((album) => {
