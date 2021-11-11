@@ -1,6 +1,7 @@
 import * as AlbumActions from "../../store/album";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import "./DeleteAlbum.css";
 
 const DeleteAlbum = ({ id }) => {
   const dispatch = useDispatch();
@@ -15,7 +16,9 @@ const DeleteAlbum = ({ id }) => {
   return (
     <div className="removeAlbumModal">
       <span>Are you sure you want to delete this album?</span>
-      <button onClick={removeAlbum}>Delete</button>
+      <button onClick={removeAlbum} className="removeAlbumBtn">
+        Delete
+      </button>
     </div>
   );
 };

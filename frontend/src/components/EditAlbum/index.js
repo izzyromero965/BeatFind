@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as AlbumActions from "../../store/album";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserAlbums } from "../../store/album";
+import "./EditAlbum.css";
 
 const EditAlbum = ({ id }) => {
   const dispatch = useDispatch();
@@ -21,23 +22,25 @@ const EditAlbum = ({ id }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="EditAlbumForm">
-      <input
-        type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="Album Title"
-      ></input>
-      <input
-        type="text"
-        onChange={(e) => setAlbumCoverUrl(e.target.value)}
-        value={albumCoverUrl}
-        placeholder="Album picture url"
-        name="AlbumProfilePic"
-      />
+    <div className="EditAlbumModal">
+      <form onSubmit={handleSubmit} className="EditAlbumForm">
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Album Title"
+        ></input>
+        <input
+          type="text"
+          onChange={(e) => setAlbumCoverUrl(e.target.value)}
+          value={albumCoverUrl}
+          placeholder="Album picture url"
+          name="AlbumProfilePic"
+        />
 
-      <button type="submit">Submit</button>
-    </form>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 };
 

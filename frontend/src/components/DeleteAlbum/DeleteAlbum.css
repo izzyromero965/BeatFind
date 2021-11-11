@@ -1,7 +1,7 @@
-.removeImageModal {
+.removeAlbumModal {
   padding: 1rem;
 }
-.deleteImageBtn {
+.removeAlbumBtn {
   margin-left: 0.5rem;
   background-color: crimson;
   color: white;

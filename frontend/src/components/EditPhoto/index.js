@@ -53,7 +53,9 @@ const EditPhoto = ({ id }) => {
             );
           })}
         </select>
-        <button type="submit">Submit</button>
+        <button type="submit" className="submitEditBtn">
+          Submit
+        </button>
       </form>
     </div>
   );

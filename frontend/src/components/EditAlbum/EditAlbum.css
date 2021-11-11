@@ -1,9 +1,4 @@
-.new-albumBtn {
-  border: none;
-  background-color: white;
-}
-
-.createAlbumModal {
+.EditAlbumModal {
   display: flex;
   padding: 2rem;
   flex-direction: column;
@@ -11,7 +6,7 @@
   border: none;
 }
 
-.createAlbumForm {
+.EditAlbumForm {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;

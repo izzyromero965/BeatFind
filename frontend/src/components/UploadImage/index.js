@@ -46,6 +46,7 @@ const UploadImage = () => {
           value={imageUrl}
           placeholder="Image url"
           name="imageUrl"
+          required
         />
         <textarea
           value={content}
@@ -53,6 +54,7 @@ const UploadImage = () => {
           name="content"
           placeholder="Add a description"
           rows="10"
+          required
         ></textarea>
         <select value={albumId} onChange={(e) => setAlbumId(e.target.value)}>
           <option value={albumId} key={albumId}>
