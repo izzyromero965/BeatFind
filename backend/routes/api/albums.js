@@ -40,10 +40,11 @@ router.delete(
 router.post(
   "/",
   asyncHandler(async (req, res, next) => {
-    const { userId, title } = req.body;
+    const { userId, title, albumCoverUrl } = req.body;
     const newAlbum = await Album.create({
       userId,
       title,
+      albumCoverUrl,
     });
     if (!newAlbum) {
       const error = new Error("Album failed to post.");
@@ -60,12 +61,13 @@ router.put(
   "/:id",
   asyncHandler(async (req, res, next) => {
     const { id } = req.params;
-    const { title } = req.body;
+    const { title, albumCoverUrl } = req.body;
     const album = await Album.findByPk(id);
     const err = new Error("Album not found!");
     if (album) {
       await album.update({
         title,
+        albumCoverUrl,
       });
 
       res.json(album);
