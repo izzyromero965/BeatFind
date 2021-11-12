@@ -11,7 +11,6 @@ const DeleteAlbum = ({ id, setShowModal }) => {
     e.preventDefault();
     dispatch(AlbumActions.removeAlbum(+id));
     setShowModal(false);
-    return history.push(`/${sessionUser.username}/profile`);
   };
 
   return (
