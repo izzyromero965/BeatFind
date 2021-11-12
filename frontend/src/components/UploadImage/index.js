@@ -2,14 +2,16 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { uploadImage } from "../../store/actions";
 import { getUserAlbums } from "../../store/album";
+import { useHistory } from "react-router";
 import "./UploadImage.css";
 
-const UploadImage = () => {
+const UploadImage = ({ setShowModal }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+  const history = useHistory();
   const [imageUrl, setImageUrl] = useState("");
   const [content, setContent] = useState("");
-  const [albumId, setAlbumId] = useState();
+  const [albumId, setAlbumId] = useState(null);
   const [albums, setAlbums] = useState([]);
 
   useEffect(async () => {
@@ -32,8 +34,9 @@ const UploadImage = () => {
       content,
     };
 
-    const returnedFromDispatch = await dispatch(uploadImage(newImage));
-
+    const newImageDispatched = await dispatch(uploadImage(newImage));
+    setShowModal(false);
+    history.push(`/photos/${newImageDispatched.id}`);
     reset();
   };
 
@@ -57,7 +60,7 @@ const UploadImage = () => {
           required
         ></textarea>
         <select value={albumId} onChange={(e) => setAlbumId(e.target.value)}>
-          <option value={albumId} key={albumId}>
+          <option value={null} key={999}>
             none
           </option>
           {albums?.map((album) => {

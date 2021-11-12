@@ -10,26 +10,24 @@ const PhotoPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [image, setImage] = useState();
+  const imageSelect = useSelector((state) => state.imageState[id]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-
-  useEffect(async () => {
-    const oneImage = await dispatch(getOneImage(id));
-    setImage(oneImage);
-    setIsLoaded(true);
+  useEffect(() => {
+    dispatch(getOneImage(id));
+    if (imageSelect) setIsLoaded(true);
   }, [dispatch]);
 
   return (
     isLoaded && (
       <div className="photoPageContainer">
         <div className="photoHeader">
-          <img src={image.imageUrl} className="photoPageImage"></img>
+          <img src={imageSelect?.imageUrl} className="photoPageImage"></img>
         </div>
         <div className="photoDescription">
-          <h3>{image.content}</h3>
+          <h3>{imageSelect?.content}</h3>
         </div>
-        {image.userId == sessionUser?.id && (
+        {imageSelect.userId == sessionUser?.id && (
           <div className="modalBtns">
             <EditPhotoModal id={+id} />
             <DeletePhotoModal id={+id} />

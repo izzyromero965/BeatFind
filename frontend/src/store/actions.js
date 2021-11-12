@@ -95,33 +95,28 @@ export const deleteImage = (id) => async (dispatch) => {
   return res;
 };
 
-const initialState = { images: {} };
+const initialState = {};
 
 const imageReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_IMAGES:
-      const newState = { ...state, images: { ...state.images } };
+      const newState = { ...state };
       action.images.forEach((image) => {
-        newState.images[image.id] = image;
+        newState[image.id] = image;
       });
       return newState;
     case ADD_IMAGES:
     case UPDATE_IMAGES:
+      console.log("a string before", action, state);
       return {
         ...state,
-        images: {
-          ...state.images,
-          [action.newImage.id]: action.newImage,
-        },
+        [action.newImage.id]: action.newImage,
       };
     case REMOVE_IMAGES: {
       const newState = { ...state };
       delete newState[action.imageId];
       return newState;
     }
-    // case LOAD_ONEIMAGE:
-    //   const newState2 = { ...state };
-
     default:
       return state;
   }

@@ -7,7 +7,7 @@ import "./UserHomePage.css";
 const UserHomePage = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const imageObj = useSelector((state) => state.imageState.images);
+  const imageObj = useSelector((state) => state.imageState);
   const images = Object.values(imageObj);
 
   useEffect(() => {
