@@ -8,10 +8,12 @@ function UploadImageModal() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)} className="uploadButton">Upload</button>
+      <button onClick={() => setShowModal(true)} className="uploadButton">
+        Upload
+      </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <UploadImage />
+          <UploadImage setShowModal={setShowModal} />
         </Modal>
       )}
     </>

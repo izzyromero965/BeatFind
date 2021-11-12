@@ -5,9 +5,9 @@ import { getUserAlbums } from "../../store/album";
 import { useHistory } from "react-router";
 import "./EditPhoto.css";
 
-const EditPhoto = ({ id }) => {
+const EditPhoto = ({ id, setShowModal }) => {
   const dispatch = useDispatch();
-  // const history = useHistory();
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const [content, setContent] = useState("");
   const [albumId, setAlbumId] = useState(null);
@@ -27,8 +27,8 @@ const EditPhoto = ({ id }) => {
       albumId,
       id,
     };
-    return dispatch(imageActions.editImage(payload));
-    // history.push("/")
+    dispatch(imageActions.editImage(payload));
+    setShowModal(false);
   };
 
   return (
@@ -42,7 +42,7 @@ const EditPhoto = ({ id }) => {
           rows="10"
         ></textarea>
         <select value={albumId} onChange={(e) => setAlbumId(e.target.value)}>
-          <option value={albumId} key={null}>
+          <option value={null} key={1000}>
             none
           </option>
           {albums?.map((album) => {

@@ -12,7 +12,7 @@ function CreateAlbumModal() {
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <CreateAlbum />
+          <CreateAlbum setShowModal={setShowModal} />
         </Modal>
       )}
     </>

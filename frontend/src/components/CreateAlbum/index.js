@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createAlbum } from "../../store/album";
 import "./CreateAlbumModal.css";
 
-const CreateAlbum = () => {
+const CreateAlbum = ({ setShowModal }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [title, setTitle] = useState("");
@@ -22,6 +22,7 @@ const CreateAlbum = () => {
     };
 
     const returnedFromDispatch = await dispatch(createAlbum(payload));
+    setShowModal(false);
     reset();
   };
 

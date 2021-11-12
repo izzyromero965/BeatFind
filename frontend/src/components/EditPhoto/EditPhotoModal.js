@@ -9,7 +9,7 @@ function EditPhotoModal({ id }) {
       <button onClick={() => setShowModal(true)}>Edit</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditPhoto id={+id} />
+          <EditPhoto id={+id} setShowModal={setShowModal} />
         </Modal>
       )}
     </>
