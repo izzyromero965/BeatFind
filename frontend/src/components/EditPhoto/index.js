@@ -9,9 +9,9 @@ const EditPhoto = ({ id, setShowModal }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
-  const photo = useSelector()
-  const [content, setContent] = useState("");
-  const [albumId, setAlbumId] = useState(null);
+  const photo = useSelector((state) => state.imageState[id]);
+  const [content, setContent] = useState(photo.content);
+  const [albumId, setAlbumId] = useState(photo.albumId);
   const [albums, setAlbums] = useState([]);
   const [image, setImage] = useState();
   useEffect(async () => {
@@ -41,9 +41,10 @@ const EditPhoto = ({ id, setShowModal }) => {
           value={content}
           onChange={(e) => setContent(e.target.value)}
           rows="10"
+          required
         ></textarea>
         <select value={albumId} onChange={(e) => setAlbumId(e.target.value)}>
-          <option value={null} key={1000}>
+          <option value={"none"} key={1000}>
             none
           </option>
           {albums?.map((album) => {
