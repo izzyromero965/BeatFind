@@ -9,7 +9,7 @@ function EditAlbumModal({ id }) {
       <button onClick={() => setShowModal(true)}>Edit</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditAlbum id={+id} />
+          <EditAlbum id={+id} setShowModal={setShowModal} />
         </Modal>
       )}
     </>

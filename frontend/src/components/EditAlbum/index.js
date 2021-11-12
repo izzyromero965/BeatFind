@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserAlbums } from "../../store/album";
 import "./EditAlbum.css";
 
-const EditAlbum = ({ id }) => {
+const EditAlbum = ({ id, setShowModal }) => {
   const dispatch = useDispatch();
-  const albumState = useSelector((state) => state.albumState.albums[id]);
+  const albumState = useSelector((state) => state.albumState[id]);
   const [title, setTitle] = useState(albumState.title);
   const [albumCoverUrl, setAlbumCoverUrl] = useState(albumState.albumCoverUrl);
 
@@ -18,7 +18,8 @@ const EditAlbum = ({ id }) => {
       albumCoverUrl,
     };
 
-    return dispatch(AlbumActions.editAlbum(payload));
+    dispatch(AlbumActions.editAlbum(payload));
+    setShowModal(false);
   };
 
   return (
