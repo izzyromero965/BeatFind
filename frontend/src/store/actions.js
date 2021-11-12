@@ -117,6 +117,11 @@ const imageReducer = (state = initialState, action) => {
       delete newState[action.imageId];
       return newState;
     }
+    case LOAD_ONEIMAGE: {
+      let newState = { ...state };
+      newState[action.image.id] = action.image;
+      return newState;
+    }
     default:
       return state;
   }

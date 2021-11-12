@@ -9,6 +9,7 @@ const EditPhoto = ({ id, setShowModal }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
+  const photo = useSelector()
   const [content, setContent] = useState("");
   const [albumId, setAlbumId] = useState(null);
   const [albums, setAlbums] = useState([]);

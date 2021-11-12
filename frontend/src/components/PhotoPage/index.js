@@ -14,8 +14,8 @@ const PhotoPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch(getOneImage(id));
-    if (imageSelect) setIsLoaded(true);
+    dispatch(getOneImage(id)).then(() => setIsLoaded(true));
+    console.log(imageSelect);
   }, [dispatch]);
 
   return (
@@ -26,13 +26,13 @@ const PhotoPage = () => {
         </div>
         <div className="photoDescription">
           <h3>{imageSelect?.content}</h3>
+          {imageSelect?.userId == sessionUser?.id && (
+            <div className="modalBtns">
+              <EditPhotoModal id={+id} />
+              <DeletePhotoModal id={+id} />
+            </div>
+          )}
         </div>
-        {imageSelect.userId == sessionUser?.id && (
-          <div className="modalBtns">
-            <EditPhotoModal id={+id} />
-            <DeletePhotoModal id={+id} />
-          </div>
-        )}
       </div>
     )
   );
