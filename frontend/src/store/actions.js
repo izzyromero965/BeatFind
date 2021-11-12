@@ -107,7 +107,6 @@ const imageReducer = (state = initialState, action) => {
       return newState;
     case ADD_IMAGES:
     case UPDATE_IMAGES:
-      console.log("a string before", action, state);
       return {
         ...state,
         [action.newImage.id]: action.newImage,

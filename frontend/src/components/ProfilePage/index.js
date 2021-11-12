@@ -19,7 +19,6 @@ const ProfilePage = () => {
     dispatch(AlbumActions.getUserAlbums(sessionUser.id));
     if (albumSelect) {
       setIsLoaded(true);
-      console.log("this is the state you're looking for", albumSelect);
     }
   }, [dispatch]);
 

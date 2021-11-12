@@ -15,7 +15,6 @@ const PhotoPage = () => {
 
   useEffect(() => {
     dispatch(getOneImage(id)).then(() => setIsLoaded(true));
-    console.log(imageSelect);
   }, [dispatch]);
 
   return (
