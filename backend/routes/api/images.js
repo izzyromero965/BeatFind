@@ -49,7 +49,10 @@ router.put(
   "/:id",
   asyncHandler(async (req, res, next) => {
     const { id } = req.params;
-    const { albumId, content } = req.body;
+    let { albumId, content } = req.body;
+    if (albumId === "none") {
+      albumId = null;
+    }
     const image = await Image.findByPk(id);
     const err = new Error("Image not found!");
     if (image) {

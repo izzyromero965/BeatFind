@@ -1,0 +1,11 @@
+.images-container {
+  overflow: auto;
+  padding-bottom: 150px;
+}
+
+.albumImg {
+  height: 15rem;
+  width: 25rem;
+  margin: 0.7rem;
+  border-radius: 20px;
+}

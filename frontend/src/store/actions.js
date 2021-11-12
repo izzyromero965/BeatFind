@@ -107,7 +107,6 @@ const imageReducer = (state = initialState, action) => {
       return newState;
     case ADD_IMAGES:
     case UPDATE_IMAGES:
-      console.log("a string before", action, state);
       return {
         ...state,
         [action.newImage.id]: action.newImage,
@@ -115,6 +114,11 @@ const imageReducer = (state = initialState, action) => {
     case REMOVE_IMAGES: {
       const newState = { ...state };
       delete newState[action.imageId];
+      return newState;
+    }
+    case LOAD_ONEIMAGE: {
+      let newState = { ...state };
+      newState[action.image.id] = action.image;
       return newState;
     }
     default:

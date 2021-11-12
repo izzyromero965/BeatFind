@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as AlbumActions from "../../store/album";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserAlbums } from "../../store/album";
 import "./EditAlbum.css";
 
 const EditAlbum = ({ id, setShowModal }) => {
