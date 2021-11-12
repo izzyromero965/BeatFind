@@ -29,6 +29,7 @@ const EditAlbum = ({ id, setShowModal }) => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Album Title"
+          required
         ></input>
         <input
           type="text"
@@ -36,6 +37,7 @@ const EditAlbum = ({ id, setShowModal }) => {
           value={albumCoverUrl}
           placeholder="Album picture url"
           name="AlbumProfilePic"
+          required
         />
 
         <button type="submit">Submit</button>
