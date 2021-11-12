@@ -64,24 +64,21 @@ export const removeAlbum = (id) => async (dispatch) => {
   dispatch(removeAlbums(id));
   return res;
 };
-const initialState = { albums: {} };
+const initialState = {};
 
 const albumReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_ALBUMS:
-      const newState = { ...state, albums: { ...state.albums } };
+      const newState = { ...state };
       action.albums.forEach((album) => {
-        newState.albums[album.id] = album;
+        newState[album.id] = album;
       });
       return newState;
     case ADD_ALBUMS:
     case UPDATE_ALBUMS:
       return {
         ...state,
-        albums: {
-          ...state.albums,
-          [action.newAlbum.id]: action.newAlbum,
-        },
+        [action.newAlbum.id]: action.newAlbum,
       };
     case REMOVE_ALBUMS: {
       const newState = { ...state };
