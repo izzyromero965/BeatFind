@@ -28,7 +28,7 @@ const PhotoPage = () => {
           {imageSelect?.userId == sessionUser?.id && (
             <div className="modalBtns">
               <EditPhotoModal id={+id} />
-              <DeletePhotoModal id={+id} />
+              <DeletePhotoModal id={+id}  />
             </div>
           )}
         </div>

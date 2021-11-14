@@ -6,7 +6,7 @@ function EditPhotoModal({ id }) {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Edit</button>
+      <button onClick={() => setShowModal(true)} className="edit">Edit</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <EditPhoto id={+id} setShowModal={setShowModal} />

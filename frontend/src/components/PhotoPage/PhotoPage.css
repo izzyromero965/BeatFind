@@ -27,3 +27,10 @@
 .modalBtns > button {
   width: 5rem;
 }
+
+.editPhoto {
+  cursor: pointer;
+}
+.deletePhoto {
+  cursor: pointer;
+}

@@ -12,7 +12,6 @@ const ProfilePage = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const albumSelect = useSelector((state) => Object.values(state.albumState));
-  const [showModal, setShowModal] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
