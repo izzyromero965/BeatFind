@@ -40,7 +40,7 @@ const EditAlbum = ({ id, setShowModal }) => {
           required
         />
 
-        <button type="submit">Submit</button>
+        <button type="submit" className="submitBtn">Submit</button>
       </form>
     </div>
   );

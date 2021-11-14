@@ -71,7 +71,9 @@ const UploadImage = ({ setShowModal }) => {
             );
           })}
         </select>
-        <button type="submit">Upload</button>
+        <button type="submit" className="uploadImageBtn">
+          Upload
+        </button>
       </form>
     </div>
   );

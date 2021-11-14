@@ -45,7 +45,7 @@ const CreateAlbum = ({ setShowModal }) => {
           name="AlbumProfilePic"
           required
         />
-        <button type="submit">Submit</button>
+        <button type="submit" className="submit">Submit</button>
       </form>
     </div>
   );

@@ -15,3 +15,7 @@
 .uploadButton {
   cursor: pointer;
 }
+
+.uploadImageBtn {
+  align-self: center;
+}
