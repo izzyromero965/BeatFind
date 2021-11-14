@@ -29,6 +29,14 @@ router.delete(
   "/:id",
   asyncHandler(async (req, res) => {
     const { id } = req.params;
+    const images = await Image.findAll({
+      where: {
+        albumId: id,
+      },
+    });
+    images.forEach((img) => {
+      img.update({ albumId: null });
+    });
     const album = await Album.findByPk(id);
     await album.destroy();
     res.send("Album destroyed successfully!");
