@@ -18,8 +18,12 @@ const Header = () => {
         <Link to={`/${sessionUser.username}/untitled`} className="untitled">
           Photos without albums
         </Link>
-        <Link to={`/${sessionUser.username}/allMyPhotos`}>Photostream</Link>
-        <Link to={`/${sessionUser.username}/profile`}>Albums</Link>
+        <Link to={`/${sessionUser.username}/allMyPhotos`} className="untitled">
+          Photostream
+        </Link>
+        <Link to={`/${sessionUser.username}/profile`} className="untitled">
+          Albums
+        </Link>
       </div>
     </>
   );
