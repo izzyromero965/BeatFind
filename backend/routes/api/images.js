@@ -1,11 +1,12 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const asyncHandler = require("express-async-handler");
+const asyncHandler = require('express-async-handler');
+const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
 
-const { Image } = require("../../db/models");
+const { Image } = require('../../db/models');
 
 router.get(
-  "/",
+  '/',
   asyncHandler(async (req, res) => {
     const images = await Image.findAll();
     res.json(images);
@@ -13,7 +14,7 @@ router.get(
 );
 
 router.get(
-  "/:id/null",
+  '/:id/null',
   asyncHandler(async (req, res) => {
     const { id } = req.params;
     const images = await Image.findAll({
@@ -27,17 +28,17 @@ router.get(
 );
 
 router.delete(
-  "/:id",
+  '/:id',
   asyncHandler(async (req, res) => {
     const { id } = req.params;
     const image = await Image.findByPk(id);
     await image.destroy();
-    res.send("Image deleted successfully!");
+    res.send('Image deleted successfully!');
   })
 );
 
 router.get(
-  "/:id",
+  '/:id',
   asyncHandler(async (req, res) => {
     const { id } = req.params;
     const image = await Image.findByPk(id);
@@ -46,15 +47,15 @@ router.get(
 );
 
 router.put(
-  "/:id",
+  '/:id',
   asyncHandler(async (req, res, next) => {
     const { id } = req.params;
     let { albumId, content } = req.body;
-    if (albumId === "none") {
+    if (albumId === 'none') {
       albumId = null;
     }
     const image = await Image.findByPk(id);
-    const err = new Error("Image not found!");
+    const err = new Error('Image not found!');
     if (image) {
       await image.update({
         albumId,
@@ -69,15 +70,17 @@ router.put(
 );
 
 router.post(
-  "/",
+  '/',
+  singleMulterUpload('image'),
   asyncHandler(async (req, res, next) => {
-    const { userId, albumId, imageUrl, content } = req.body;
+    const { userId, albumId, content } = req.body;
+    const imageUrl = await singlePublicFileUpload('req.file');
     const newImage = await Image.create({ userId, albumId, imageUrl, content });
     if (!newImage) {
-      const error = new Error("Image failed to post.");
+      const error = new Error('Image failed to post.');
       error.status = 401;
-      error.title = "Posting image failed";
-      error.errors = ["your image did not post."];
+      error.title = 'Posting image failed';
+      error.errors = ['your image did not post.'];
       return next(error);
     }
     return res.json(newImage);

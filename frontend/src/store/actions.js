@@ -1,10 +1,10 @@
-import { csrfFetch } from "./csrf";
+import { csrfFetch } from './csrf';
 
-const LOAD_IMAGES = "images/loadImages";
-const ADD_IMAGES = "images/addImages";
-const REMOVE_IMAGES = "images/removeImages";
-const UPDATE_IMAGES = "images/updateImages";
-const LOAD_ONEIMAGE = "images/loadOneImage";
+const LOAD_IMAGES = 'images/loadImages';
+const ADD_IMAGES = 'images/addImages';
+const REMOVE_IMAGES = 'images/removeImages';
+const UPDATE_IMAGES = 'images/updateImages';
+const LOAD_ONEIMAGE = 'images/loadOneImage';
 
 const loadOneImage = (image) => {
   return { type: LOAD_ONEIMAGE, image };
@@ -30,7 +30,7 @@ export const updateImage = (newImage) => ({
 });
 
 export const getImages = () => async (dispatch) => {
-  const res = await csrfFetch("/api/images");
+  const res = await csrfFetch('/api/images');
   const images = await res.json();
   dispatch(loadImages(images));
   return images;
@@ -50,11 +50,10 @@ export const getAlbumsImages = (id) => async (dispatch) => {
   return images;
 };
 
-export const uploadImage = (payload) => async (dispatch) => {
-  const res = await csrfFetch("/api/images", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
+export const uploadImage = (formdata) => async (dispatch) => {
+  const res = await csrfFetch('/api/images', {
+    method: 'POST',
+    body: formdata,
   });
 
   const newImage = await res.json();
@@ -64,8 +63,8 @@ export const uploadImage = (payload) => async (dispatch) => {
 
 export const editImage = (payload) => async (dispatch) => {
   const res = await csrfFetch(`/api/images/${payload.id}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
   });
   const updatedImage = await res.json();
@@ -89,7 +88,7 @@ export const getUserImages = (id) => async (dispatch) => {
 
 export const deleteImage = (id) => async (dispatch) => {
   const res = await csrfFetch(`/api/images/${id}`, {
-    method: "DELETE",
+    method: 'DELETE',
   });
   dispatch(removeImages(id));
   return res;

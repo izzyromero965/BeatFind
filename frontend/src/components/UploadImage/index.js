@@ -1,16 +1,16 @@
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { uploadImage } from "../../store/actions";
-import { getUserAlbums } from "../../store/album";
-import { useHistory } from "react-router";
-import "./UploadImage.css";
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { uploadImage } from '../../store/actions';
+import { getUserAlbums } from '../../store/album';
+import { useHistory } from 'react-router';
+import './UploadImage.css';
 
 const UploadImage = ({ setShowModal }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
-  const [imageUrl, setImageUrl] = useState("");
-  const [content, setContent] = useState("");
+  const [imageUrl, setImageUrl] = useState('');
+  const [content, setContent] = useState('');
   const [albumId, setAlbumId] = useState(null);
   const [albums, setAlbums] = useState([]);
 
@@ -20,21 +20,27 @@ const UploadImage = ({ setShowModal }) => {
   }, [dispatch]);
 
   const reset = () => {
-    setImageUrl("");
-    setContent("");
+    setImageUrl('');
+    setContent('');
     setAlbumId();
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newImage = {
-      userId: sessionUser.id,
-      albumId,
-      imageUrl,
-      content,
-    };
+    const formData = new FormData();
+    formData.append('userId', sessionUser.id);
+    formData.append('albumId', albumId);
+    formData.append('image_url', imageUrl);
+    formData.append('content', content);
 
-    const newImageDispatched = await dispatch(uploadImage(newImage));
+    // const newImage = {
+    //   userId: sessionUser.id,
+    //   albumId,
+    //   imageUrl,
+    //   content,
+    // };
+
+    const newImageDispatched = await dispatch(uploadImage(formData));
     setShowModal(false);
     history.push(`/photos/${newImageDispatched.id}`);
     reset();
@@ -44,10 +50,9 @@ const UploadImage = ({ setShowModal }) => {
     <div className="uploadImgContainer">
       <form onSubmit={handleSubmit} className="uploadImageForm">
         <input
-          type="text"
-          onChange={(e) => setImageUrl(e.target.value)}
-          value={imageUrl}
-          placeholder="Image url"
+          type="file"
+          accept=".jpg,.jpeg,.png,.gif"
+          onChange={(e) => setImageUrl(e.target.files[0])}
           name="imageUrl"
           required
         />
