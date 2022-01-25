@@ -30,7 +30,7 @@ const UploadImage = ({ setShowModal }) => {
     const formData = new FormData();
     formData.append('userId', sessionUser.id);
     formData.append('albumId', albumId);
-    formData.append('image_url', imageUrl);
+    formData.append('imageUrl', imageUrl);
     formData.append('content', content);
 
     // const newImage = {

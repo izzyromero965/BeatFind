@@ -53,6 +53,9 @@ export const getAlbumsImages = (id) => async (dispatch) => {
 export const uploadImage = (formdata) => async (dispatch) => {
   const res = await csrfFetch('/api/images', {
     method: 'POST',
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
     body: formdata,
   });
 
