@@ -71,10 +71,11 @@ router.put(
 
 router.post(
   '/',
-  singleMulterUpload('image'),
+  singleMulterUpload('imageUrl'),
   asyncHandler(async (req, res, next) => {
     const { userId, albumId, content } = req.body;
-    const imageUrl = await singlePublicFileUpload('req.file');
+    const imageUrl = await singlePublicFileUpload(req.file);
+    console.log('we are hitting the route XXXXXXXXXXXX', imageUrl);
     const newImage = await Image.create({ userId, albumId, imageUrl, content });
     if (!newImage) {
       const error = new Error('Image failed to post.');

@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Image = sequelize.define(
-    "Image",
+    'Image',
     {
       userId: DataTypes.INTEGER,
-      albumId: DataTypes.INTEGER,
+      albumId: { type: DataTypes.INTEGER, allowNull: true },
       imageUrl: DataTypes.STRING,
       content: DataTypes.TEXT,
     },
@@ -12,14 +12,14 @@ module.exports = (sequelize, DataTypes) => {
   );
   Image.associate = function (models) {
     Image.belongsTo(models.User, {
-      foreignKey: "userId",
+      foreignKey: 'userId',
     });
     Image.belongsTo(models.Album, {
-      foreignKey: "albumId",
+      foreignKey: 'albumId',
     });
     Image.hasMany(models.Comment, {
-      foreignKey: "imageId",
-      onDelete: "cascade",
+      foreignKey: 'imageId',
+      onDelete: 'cascade',
       hooks: true,
     });
   };
