@@ -2,6 +2,8 @@
 
 ---- Welcome to BeatFind! A clone of Flickr (https://Flickr.com)! Currently a work in progress. -----
 
+![BeatFind](https://res.cloudinary.com/daycvll86/image/upload/v1643644952/Screen_Shot_2022-01-26_at_5.57.18_PM_m4rnqt.png)
+
 Here is a link to the live site: https://beatfind.herokuapp.com/
 
 BeatFind is a clone of Flickr with CRUD operations for images and albums. Most of these features are only available when logged into the site, you can create an account and try it yourself at https://beatfind.herokuapp.com/signup
