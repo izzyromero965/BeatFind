@@ -2,7 +2,7 @@
 
 ---- Welcome to BeatFind! A clone of Flickr (https://Flickr.com)! Currently a work in progress. -----
 
-<img src="/BeatfindScreenTrue" width="200px">
+<img src="/BeatfindScreenTrue.png">
 
 Here is a link to the live site: https://beatfind.herokuapp.com/
 
